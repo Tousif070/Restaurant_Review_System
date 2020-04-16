@@ -1,0 +1,23 @@
+DDL QUERIES:
+
+create table general_users(
+    id int(10) auto_increment primary key,
+    firstname varchar(50),
+    lastname varchar(50),
+    gender varchar(50),
+    date_of_birth date,
+    email varchar(50),
+    location varchar(50),
+    contact_number varchar(50) unique
+);
+
+
+create table login(
+    id int(10) primary key,
+    username varchar(50) unique,
+    password varchar(50),
+    usertype varchar(50)
+);
+
+Date Format: Date and time can be retrieved using the format given below.
+DATE_FORMAT(column_name, '%d-%b-%y %h:%i:%s %p')

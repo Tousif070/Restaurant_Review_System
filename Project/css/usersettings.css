@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,500,700');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+/* HEADER STYLE */
+
+header {
+    margin: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.logo {
+    float: left;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+/* STYLE FOR THE DROPDOWN */
+
+.username {
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    font-size: 20px;
+    color: #232323;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dropdown-content .anchor {
+    background-color: #FFF6EB;
+    width: 110px;
+    padding: 5px 15px 5px 15px;
+    margin: 7px 0;
+    border-radius: 3px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+}
+
+li:hover .username {
+    color: #FFDC88;
+}
+
+li:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content .anchor:hover {
+    background-color: #D16715;
+}
+
+.dropdown-content a:hover {
+    color: #FFF6EB;
+    font-weight: 700;
+}
+
+
+section::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* THIS ACCOUNTHOME PAGE SECTION - 1 ACTS AS THE BACKGROUND STYLE FOR THE HEADER */
+
+.usersettings-page-section-1 {
+    background: #232323;
+    padding: 53px;
+}
+
+/* ACCOUNTHOME PAGE SECTION - 2 STYLE */
+
+.usersettings-page-section-2 {
+    background: #FFF6EB;
+    padding: 100px 0;
+    height: 500px;
+}
+
+/* SUCCESSFUL CHANGES MESSAGE STYLE */
+
+.successful-message {
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    color: #009F25;
+    padding-top: 8px;
+}
+
+/* FORM STYLE */
+
+.form-container {
+    margin: auto;
+    max-width: 30%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.form-container h1 {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.label {
+    font-weight: 700;
+}
+
+table {
+    margin: auto;
+    width: 60%;
+}
+
+td {
+    padding: 2px;
+}
+
+.error-messages {
+    font-size: 14px;
+    font-weight: 500;
+    color: #D1151F;
+}
+
+textarea {
+    font-family: 'Raleway';
+}
+
+input[type="text"], input[type="password"] {
+    font-size: 16px;
+    width: 100%;
+    padding: 3px;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #D16715;
+    outline-width: thin;
+    outline-style: solid;
+    outline-color: #D16715;
+}
+
+/* BUTTON STYLE */
+
+.button {
+    background: #FFF6EB;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 3px 20px;
+    margin: 10px 0 10px 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 3px;
+    outline: none;
+}
+
+.button-accent {
+    color: #D16715;
+    border-color: #D16715;
+}
+
+.button-accent:hover {
+    background: #D16715;
+    color: #FFF6EB;
+}
+
+/* GENERAL CONTAINER */
+
+.container {
+    margin: auto;
+    max-width: 100%;
+}
+
+/* FOOTER STYLE */
+
+hr {
+    width: 60%;
+    height: 3px;
+    background: #FFDC88;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.bottomline {
+    width: 40%;
+}
+
+footer {
+    background: #232323;
+    color: white;
+    margin: 0;
+    padding: 40px;
+    padding-bottom: 5px;
+}
+
+.contact-us {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contact-us span {
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px;
+}
+
+.docs a{
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+}
+
+.docs a:hover {
+    color: #FFDC88;
+}
+
+.copyright {
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 10px;
+}

@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,500,700');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+/* HEADER STYLE */
+
+header {
+    margin: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.logo {
+    float: left;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 10px;
+}
+
+nav a {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+}
+
+nav a:hover {
+    color: #FFDC88;
+}
+
+section::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* HOMEPAGE SECTION - 1 STYLE */
+
+.homepage-section-1 {
+    color: white;
+    background-image: url(../images/homepageimage1.jpg);
+    background-size: cover;
+    padding: 350px;
+    height: 1000px;
+}
+
+/* HOMEPAGE SECTION - 2 STYLE */
+
+.homepage-section-2 {
+    color: white;
+    background-image: url(../images/homepageimage2.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 350px;
+    height: 1000px;
+}
+
+/* GENERAL CONTAINER */
+
+.container {
+    margin: auto;
+    max-width: 100%;
+}
+
+/* QUOTE STYLE */
+
+.quote {
+    font-size: 40px;
+    padding-bottom: 50px;
+}
+
+.quote span {
+    display: block;
+    font-weight: 300;
+    font-size: 35px;
+}
+
+/* BUTTON STYLE */
+
+.button {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 3px 35px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 3px;
+}
+
+.button-accent {
+    color: #FFDC88;
+    border-color: #FFDC88;
+}
+
+.button-accent:hover {
+    background: #FFDC88;
+    color: black;
+}
+
+/* FOOTER STYLE */
+
+hr {
+    width: 60%;
+    height: 3px;
+    background: #FFDC88;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.bottomline {
+    width: 40%;
+}
+
+footer {
+    background: #232323;
+    color: white;
+    margin: 0;
+    padding: 40px;
+    padding-bottom: 5px;
+}
+
+.contact-us {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contact-us span {
+    display: block;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px;
+}
+
+.docs a{
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+}
+
+.docs a:hover {
+    color: #FFDC88;
+}
+
+.copyright {
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 10px;
+}
