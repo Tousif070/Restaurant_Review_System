@@ -5,7 +5,7 @@
         header("Location:accounthome.php");
     }
 
-    require "dbconnect.php";
+    require "control_logic/dbconnect.php";
 
     $username=$password="";
     $emptyUsername=$emptyPassword="";

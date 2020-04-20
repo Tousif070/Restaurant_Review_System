@@ -1,6 +1,6 @@
 <?php
 
-    require "dbconnect.php";
+    require "control_logic/dbconnect.php";
 
     $id=$username=$email=$password=$repeatPassword=$contactNumber="";
     $emptyUsername=$emptyEmail=$emptyPassword=$emptyRepeatPassword=$emptyContactNumber="";
@@ -113,7 +113,7 @@
                                 <a href="usersettings.php">Settings</a>
                             </div>
                             <div class="anchor">
-                                <a href="logout.php">Logout</a>
+                                <a href="control_logic/logout.php">Logout</a>
                             </div>
                         </div>
                     </li>
@@ -172,7 +172,7 @@
                         ?>
                     </div>
                 </h1>
-                <form name="passwordForm" action="changepassword.php" method="post" onsubmit="return validatePassword()">
+                <form name="passwordForm" action="control_logic/changepassword.php" method="post" onsubmit="return validatePassword()">
                     <table>
 
                         <!-- PASSWORD -->

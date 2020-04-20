@@ -1,6 +1,6 @@
 <?php
 
-    require "dbconnect.php";
+    require "control_logic/dbconnect.php";
 
     function isNumber($value)
     {

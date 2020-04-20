@@ -1,6 +1,6 @@
 <?php
 
-    require "dbconnect.php";
+    require "control_logic/dbconnect.php";
 
     $id="";
     $username="";
@@ -52,7 +52,7 @@
                                 <a href="usersettings.php">Settings</a>
                             </div>
                             <div class="anchor">
-                                <a href="logout.php">Logout</a>
+                                <a href="control_logic/logout.php">Logout</a>
                             </div>
                         </div>
                     </li>
