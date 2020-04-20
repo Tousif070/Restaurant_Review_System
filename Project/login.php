@@ -63,7 +63,7 @@
                 {
                     if($rs["usertype"] == "general_user")
                     {
-                        setcookie("userID", $rs["id"], time() + 36000);
+                        setcookie("userID", $rs["id"], time() + 36000, "/");
                         header("Location:accounthome.php");
                     }
                     else if($rs["usertype"] == "restaurant")

@@ -15,6 +15,6 @@
         executeQuery($query);
         closeDatabaseConnection();
 
-        header("Location:usersettings.php?passwordChangeSuccess=1");
+        header("Location:../usersettings.php?passwordChangeSuccess=1");
     }
 ?>
