@@ -1,6 +1,6 @@
 DDL QUERIES:
 
-
+New Definitions Will Be Added Later
 
 Date Format: Date and time can be retrieved using the format given below.
 DATE_FORMAT(column_name, '%d-%b-%y %h:%i:%s %p')
