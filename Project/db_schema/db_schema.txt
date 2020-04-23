@@ -18,7 +18,7 @@ CREATE TABLE photos(
 ALTER TABLE photos ADD CONSTRAINT fk_account_id FOREIGN KEY (account_id) REFERENCES login (id);
 
 CREATE TABLE general_users(
-	id int(10) PRIMARY KEY AUTO_INCREMENT,
+	id int(10) PRIMARY KEY,
     firstname varchar(100),
     lastname varchar(100),
     gender varchar(100),
@@ -29,7 +29,7 @@ CREATE TABLE general_users(
 );
 
 CREATE TABLE restaurants(
-	id int(10) PRIMARY KEY AUTO_INCREMENT,
+	id int(10) PRIMARY KEY,
     restaurant_name varchar(100),
     branch_name varchar(100),
     address varchar(100),
@@ -43,7 +43,7 @@ CREATE TABLE restaurants(
 Note: Both the "general_users" table and the "restaurants" table get values for their attribute "id" from
       the attribute "id" of the "login" table. This is handled programmatically in the backend using php.
 
-ALTER TABLE general_users ADD CONSTRAINT fk_profile_photo_id FOREIGN KEY (profile_photo_id) REFERENCES photos (id);
+ALTER TABLE general_users ADD CONSTRAINT fk_profile_photo_id1 FOREIGN KEY (profile_photo_id) REFERENCES photos (id);
 
 ALTER TABLE restaurants ADD CONSTRAINT fk_profile_photo_id2 FOREIGN KEY (profile_photo_id) REFERENCES photos (id);
 

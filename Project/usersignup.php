@@ -168,8 +168,7 @@
                 }
                 else
                 {
-                    $otherLocation=filter_var($otherLocation, FILTER_SANITIZE_STRING);
-                    $finalLocation=$otherLocation;
+                    $finalLocation=filter_var($otherLocation, FILTER_SANITIZE_STRING);
                 }
             }
         }
@@ -179,7 +178,7 @@
             $submissionStatus=0;
         }
 
-        $contactNumber=$_POST["contactNumber"];
+        /*$contactNumber=$_POST["contactNumber"];
 
         if(empty($contactNumber))
         {
@@ -204,12 +203,13 @@
                 $submissionStatus=0;
             }
         }
+        */
 
         if($submissionStatus)
         {
             $dateOfBirth=$year . "-" . $month . "-" . $day;
-            $finalContactNumber="+880" . $contactNumber;
-            $usertype="general_user";
+            //$finalContactNumber="+880" . $contactNumber;
+            $usertype=1;
 
             $query="select username from login where username='$username'";
 
@@ -218,15 +218,16 @@
 
             if(count($result) == 0)
             {
-                $query="insert into general_users (firstname, lastname, gender, date_of_birth, email, location, contact_number) values ('$firstName', '$lastName', '$gender', '$dateOfBirth', '$email', '$finalLocation', '$finalContactNumber')";
+                $query="insert into login (username, password, usertype) values ('$username', '$password', '$usertype')";
 
                 executeQuery($query);
 
                 $lastID=getLastID();
 
-                $query="insert into login (id, username, password, usertype) values ('$lastID', '$username', '$password', '$usertype')";
+                $query="insert into general_users (id, firstname, lastname, gender, date_of_birth, email, location, profile_photo_id) values ('$lastID', '$firstName', '$lastName', '$gender', '$dateOfBirth', '$email', '$finalLocation', null)";
 
                 executeQuery($query);
+
                 closeDatabaseConnection();
 
                 header("Location:login.php?successMsg=1&username=$username");
@@ -409,10 +410,11 @@
                         </td></tr>
                         <tr><td class="error-messages"><?php echo $emptyLocation; ?></td></tr>
 
-                        <!-- CONTACT NUMBER -->
+                        <!-- CONTACT NUMBER
                         <tr><td class="label">Contact Number:</td></tr>
                         <tr><td><input type="text" value="+880" style="width: 50px;" disabled> - <input type="text" name="contactNumber" value="<?php echo $contactNumber; ?>" style="width: 50%;"></td></tr>
                         <tr><td class="error-messages"><?php echo $emptyContactNumber.$errorContactNumber; ?></td></tr>
+                        -->
 
                         <tr><td align="right"><input class="button button-accent" type="submit" value="Submit"></td></tr>
 

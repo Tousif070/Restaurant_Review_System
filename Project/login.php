@@ -61,14 +61,14 @@
 
                 if($password == $rs["password"])
                 {
-                    if($rs["usertype"] == "general_user")
+                    if($rs["usertype"] == 1)
                     {
                         setcookie("userID", $rs["id"], time() + 36000, "/");
                         header("Location:accounthome.php");
                     }
-                    else if($rs["usertype"] == "restaurant")
+                    else if($rs["usertype"] == 2)
                     {
-                        // REDIRECT TO THE DASHBOARD OF THE RESTAURANT ACCOUNT
+                        // REDIRECT TO THE RESTAURANT ACCOUNT
                     }
                 }
                 else

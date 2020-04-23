@@ -3,7 +3,7 @@
     $servername="localhost";
     $dbUsername="root";
     $dbPassword="";
-    $dbName="eatandrate_prototype";
+    $dbName="eat_and_rate";
 
     /*$servername="remotemysql.com";
     $dbUsername="6MNIfyOxEA";

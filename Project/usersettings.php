@@ -11,19 +11,18 @@
         $id=$_COOKIE["userID"];
 
         $query1="select username from login where id='$id'";
-        $query2="select email, contact_number from general_users where id='$id'";
+        //$query2="select email from general_users where id='$id'";
 
         createDatabaseConnection();
         $result1=executeAndGetQuery($query1);
-        $result2=executeAndGetQuery($query2);
+        //$result2=executeAndGetQuery($query2);
         closeDatabaseConnection();
 
         $rs1=$result1[0];
         $username=$rs1["username"];
 
-        $rs2=$result2[0];
-        $email=$rs2["email"];
-        $contactNumber=ltrim($rs2["contact_number"], "+880");
+        //$rs2=$result2[0];
+        //$email=$rs2["email"];
     }
     else
     {
