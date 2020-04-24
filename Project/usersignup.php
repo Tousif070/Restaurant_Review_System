@@ -251,6 +251,81 @@
     <head>
         <title>Sign Up For Users</title>
         <link rel="stylesheet" type="text/css" href="css/usersignup.css">
+
+        <script>
+            function checkUsername()
+            {
+                var text=document.getElementById("username").value;
+
+                if(text == "")
+                {
+                    document.getElementById("errorUsername").innerHTML="Please Enter A Username !";
+                }
+                else
+                {
+                    var ajax=new XMLHttpRequest();
+
+                    ajax.onreadystatechange=function(){
+                        if(ajax.readyState == 4 && ajax.status == 200)
+                        {
+                            if(ajax.responseText == 1)
+                            {
+                                document.getElementById("errorUsername").innerHTML="Username Already Exists !";
+                            }
+                            else if(ajax.responseText == 0)
+                            {
+                                document.getElementById("errorUsername").innerHTML="";
+                            }
+                        }
+                    };
+
+                    ajax.open("GET", "control_logic/checkusername.php?username=" + text, true);
+                    ajax.send();
+                }
+            }
+
+            function checkPassword()
+            {
+                var text=document.getElementById("password").value;
+
+                if(text == "")
+                {
+                    document.getElementById("errorPassword").innerHTML="Please Enter A Password !";
+                }
+                else if(text.length < 8)
+                {
+                    document.getElementById("errorPassword").innerHTML="Password Should Be Minimum Of 8 Characters !";
+                }
+                else
+                {
+                    document.getElementById("errorPassword").innerHTML="";
+                }
+            }
+
+            function checkRepeatPassword()
+            {
+                var text1=document.getElementById("password").value;
+                var text2=document.getElementById("repeatPassword").value;
+
+                if(text2 == "")
+                {
+                    document.getElementById("errorRepeatPassword").innerHTML="Please Enter The Password Again !";
+                }
+                else if(text2.length < 8)
+                {
+                    document.getElementById("errorRepeatPassword").innerHTML="Password Should Be Minimum Of 8 Characters !";
+                }
+                else if(text1 != text2)
+                {
+                    document.getElementById("errorRepeatPassword").innerHTML="Passwords Do Not Match !";
+                }
+                else
+                {
+                    document.getElementById("errorRepeatPassword").innerHTML="";
+                }
+            }
+        </script>
+
     </head>
 
     <body>
@@ -298,18 +373,18 @@
 
                         <!-- USERNAME -->
                         <tr><td class="label">Username:</td></tr>
-                        <tr><td><input type="text" name="username" value="<?php echo $username; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyUsername.$errorUsername; ?></td></tr>
+                        <tr><td><input id="username" type="text" name="username" onkeyup="checkUsername()" value="<?php echo $username; ?>"></td></tr>
+                        <tr><td id="errorUsername" class="error-messages"><?php echo $emptyUsername.$errorUsername; ?></td></tr>
 
                         <!-- PASSWORD -->
                         <tr><td class="label">Password:</td></tr>
-                        <tr><td><input type="password" name="password" value="<?php echo $password; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyPassword.$errorPassword; ?></td></tr>
+                        <tr><td><input id="password" type="password" name="password" onkeyup="checkPassword()" value="<?php echo $password; ?>"></td></tr>
+                        <tr><td id="errorPassword" class="error-messages"><?php echo $emptyPassword.$errorPassword; ?></td></tr>
 
                         <!-- REPEAT PASSWORD -->
                         <tr><td class="label">Repeat Password:</td></tr>
-                        <tr><td><input type="password" name="repeatPassword" value="<?php echo $repeatPassword; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyRepeatPassword.$errorRepeatPassword; ?></td></tr>
+                        <tr><td><input id="repeatPassword" type="password" name="repeatPassword" onkeyup="checkRepeatPassword()" value="<?php echo $repeatPassword; ?>"></td></tr>
+                        <tr><td id="errorRepeatPassword" class="error-messages"><?php echo $emptyRepeatPassword.$errorRepeatPassword; ?></td></tr>
 
                         <!-- GENDER -->
                         <tr><td class="label">Gender:</td></tr>
