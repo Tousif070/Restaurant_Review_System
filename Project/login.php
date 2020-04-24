@@ -59,6 +59,8 @@
             {
                 $rs=$result[0];
 
+                $password=md5($password);
+
                 if($password == $rs["password"])
                 {
                     if($rs["usertype"] == 1)
@@ -74,6 +76,7 @@
                 else
                 {
                     $errorPassword="Invalid Password !";
+                    $password="";
                 }
             }
             else

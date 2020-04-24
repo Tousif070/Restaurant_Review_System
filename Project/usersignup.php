@@ -218,6 +218,8 @@
 
             if(count($result) == 0)
             {
+                $password=md5($password); // PASSWORD ENCRYPTION USING MD5 (MESSAGE DIGEST ALGORITHM - 5)
+
                 $query="insert into login (username, password, usertype) values ('$username', '$password', '$usertype')";
 
                 executeQuery($query);

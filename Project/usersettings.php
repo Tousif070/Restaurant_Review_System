@@ -174,6 +174,14 @@
                 <form name="passwordForm" action="control_logic/changepassword.php" method="post" onsubmit="return validatePassword()">
                     <table>
 
+                        <?php
+                            if(isset($_GET["PasswordError"]))
+                            {
+                                $errorPassword=$_GET["PasswordError"];
+                                $errorRepeatPassword=$_GET["PasswordError"];
+                            }
+                        ?>
+
                         <!-- PASSWORD -->
                         <tr><td class="label">New Password:</td></tr>
                         <tr><td><input id="password" type="password" name="password" value="<?php echo $password; ?>"></td></tr>
