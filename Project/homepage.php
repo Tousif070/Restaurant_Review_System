@@ -3,6 +3,10 @@
     {
         header("Location:accounthome.php");
     }
+    else if(isset($_COOKIE["restaurantID"]))
+    {
+        header("Location:accounthome2.php");
+    }
 ?>
 
 <html>

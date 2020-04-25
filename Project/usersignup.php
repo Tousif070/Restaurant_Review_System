@@ -1,5 +1,14 @@
 <?php
 
+    if(isset($_COOKIE["userID"]))
+    {
+        header("Location:accounthome.php");
+    }
+    else if(isset($_COOKIE["restaurantID"]))
+    {
+        header("Location:accounthome2.php");
+    }
+
     require "control_logic/dbconnect.php";
 
     function isNumber($value)
@@ -253,7 +262,7 @@
     <head>
         <title>Sign Up For Users</title>
         <link rel="stylesheet" type="text/css" href="css/usersignup.css">
-        <script src="js/usersignup.js"></script>
+        <script src="js/signup.js"></script>
     </head>
 
     <body>

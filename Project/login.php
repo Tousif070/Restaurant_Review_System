@@ -4,6 +4,10 @@
     {
         header("Location:accounthome.php");
     }
+    else if(isset($_COOKIE["restaurantID"]))
+    {
+        header("Location:accounthome2.php");
+    }
 
     require "control_logic/dbconnect.php";
 
@@ -70,7 +74,8 @@
                     }
                     else if($rs["usertype"] == 2)
                     {
-                        // REDIRECT TO THE RESTAURANT ACCOUNT
+                        setcookie("restaurantID", $rs["id"], time() + 36000, "/");
+                        header("Location:accounthome2.php");
                     }
                 }
                 else

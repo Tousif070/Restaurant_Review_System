@@ -1,5 +1,16 @@
 <?php
 
+    if(isset($_COOKIE["userID"]))
+    {
+        header("Location:accounthome.php");
+    }
+    else if(isset($_COOKIE["restaurantID"]))
+    {
+        header("Location:accounthome2.php");
+    }
+
+    require "control_logic/dbconnect.php";
+
     function isNumber($value)
     {
         $number=array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
@@ -26,10 +37,9 @@
         return $flag;
     }
 
-    $restaurantName=$username=$password=$repeatPassword=$branchName=$otherBranch=$address=$day=$month=$year=$email=$contactNumber=$about="";
+    $restaurantName=$username=$password=$repeatPassword=$branchName=$otherBranch=$finalBranch=$address=$day=$month=$year=$email=$contactNumber=$about="";
     $emptyRestaurantName=$emptyUsername=$emptyPassword=$emptyRepeatPassword=$emptyBranchName=$emptyAddress=$emptyDate=$emptyEmail=$emptyContactNumber=$emptyAbout="";
-    $errorPassword=$errorRepeatPassword=$errorEmail=$errorContactNumber="";
-    $signupSuccessMsg="Account created successfully !";
+    $errorUsername=$errorPassword=$errorRepeatPassword=$errorEmail=$errorContactNumber="";
     $submissionStatus=1;
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -102,6 +112,7 @@
         if(isset($_POST["branchName"]))
         {
             $branchName=$_POST["branchName"];
+            $finalBranch=$branchName;
 
             if($branchName == "Other")
             {
@@ -114,7 +125,7 @@
                 }
                 else
                 {
-                    $otherBranch=filter_var($otherBranch, FILTER_SANITIZE_STRING);
+                    $finalBranch=filter_var($otherBranch, FILTER_SANITIZE_STRING);
                 }
             }
         }
@@ -166,7 +177,7 @@
             }
         }
 
-        $contactNumber=$_POST["contactNumber"];
+        /*$contactNumber=$_POST["contactNumber"];
 
         if(empty($contactNumber))
         {
@@ -191,8 +202,9 @@
                 $submissionStatus=0;
             }
         }
+        */
 
-        $about=$_POST["about"];
+        /*$about=$_POST["about"];
 
         if(empty($about))
         {
@@ -203,10 +215,43 @@
         {
             $about=filter_var($about, FILTER_SANITIZE_STRING);
         }
+        */
 
-        if($submissionStatus == 1)
+        if($submissionStatus)
         {
-            $submissionStatus=2;
+            $establishedIn=$year . "-" . $month . "-" . $day;
+            $usertype=2;
+
+            $query="select username from login where username='$username'";
+
+            createDatabaseConnection();
+            $result=executeAndGetQuery($query);
+
+            if(count($result) == 0)
+            {
+                $password=md5($password); // PASSWORD ENCRYPTION USING MD5 (MESSAGE DIGEST ALGORITHM - 5)
+
+                $query="insert into login (username, password, usertype) values ('$username', '$password', '$usertype')";
+
+                executeQuery($query);
+
+                $lastID=getLastID();
+
+                $query="insert into restaurants (id, restaurant_name, branch_name, address, established_in, email, about, profile_photo_id, menu_photo_id) values ('$lastID', '$restaurantName', '$finalBranch', '$address', '$establishedIn', '$email', null, null, null)";
+
+                executeQuery($query);
+
+                closeDatabaseConnection();
+
+                header("Location:login.php?successMsg=1&username=$username");
+            }
+            else
+            {
+                $errorUsername="Username Already Exists !";
+                closeDatabaseConnection();
+            }
+
+
         }
 
 
@@ -219,6 +264,7 @@
     <head>
         <title>Sign Up For Restaurants</title>
         <link rel="stylesheet" type="text/css" href="css/restaurantsignup.css">
+        <script src="js/signup.js"></script>
     </head>
 
     <body>
@@ -247,16 +293,6 @@
 
         <section class="restaurant-signup-page-section-2">
 
-            <h1 class="successful-message">
-                <?php
-                    if($submissionStatus == 2)
-                    {
-                        echo $signupSuccessMsg;
-                        $restaurantName=$username=$password=$repeatPassword=$branchName=$otherBranch=$address=$day=$month=$year=$email=$contactNumber=$about="";
-                    }
-                ?>
-            </h1>
-
             <div class="form-container">
                 <h1>
                     Create your restaurant account
@@ -271,18 +307,18 @@
 
                         <!-- USERNAME -->
                         <tr><td class="label">Username:</td></tr>
-                        <tr><td><input type="text" name="username" value="<?php echo $username; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyUsername; ?></td></tr>
+                        <tr><td><input id="username" type="text" name="username" onkeyup="checkUsername()" value="<?php echo $username; ?>"></td></tr>
+                        <tr><td id="errorUsername" class="error-messages"><?php echo $emptyUsername.$errorUsername; ?></td></tr>
 
                         <!-- PASSWORD -->
                         <tr><td class="label">Password:</td></tr>
-                        <tr><td><input type="password" name="password" value="<?php echo $password; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyPassword.$errorPassword; ?></td></tr>
+                        <tr><td><input id="password" type="password" name="password" onkeyup="checkPassword()" value="<?php echo $password; ?>"></td></tr>
+                        <tr><td id="errorPassword" class="error-messages"><?php echo $emptyPassword.$errorPassword; ?></td></tr>
 
                         <!-- REPEAT PASSWORD -->
                         <tr><td class="label">Repeat Password:</td></tr>
-                        <tr><td><input type="password" name="repeatPassword" value="<?php echo $repeatPassword; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyRepeatPassword.$errorRepeatPassword; ?></td></tr>
+                        <tr><td><input id="repeatPassword" type="password" name="repeatPassword" onkeyup="checkRepeatPassword()" value="<?php echo $repeatPassword; ?>"></td></tr>
+                        <tr><td id="errorRepeatPassword" class="error-messages"><?php echo $emptyRepeatPassword.$errorRepeatPassword; ?></td></tr>
 
                         <!-- BRANCH NAME -->
                         <tr><td class="label">Branch Name:</td></tr>
@@ -376,15 +412,17 @@
                         <tr><td><input type="text" name="email" value="<?php echo $email; ?>"></td></tr>
                         <tr><td class="error-messages"><?php echo $emptyEmail.$errorEmail; ?></td></tr>
 
-                        <!-- CONTACT NUMBER -->
+                        <!-- CONTACT NUMBER
                         <tr><td class="label">Contact Number:</td></tr>
                         <tr><td><input type="text" value="+880" style="width: 50px;" disabled> - <input type="text" name="contactNumber" value="<?php echo $contactNumber; ?>" style="width: 50%;"></td></tr>
                         <tr><td class="error-messages"><?php echo $emptyContactNumber.$errorContactNumber; ?></td></tr>
+                        -->
 
-                        <!-- ABOUT YOUR RESTAURANT -->
+                        <!-- ABOUT YOUR RESTAURANT
                         <tr><td class="label">About Your Restaurant:</td></tr>
                         <tr><td><textarea rows="3" name="about"><?php echo $about; ?></textarea></td></tr>
                         <tr><td class="error-messages"><?php echo $emptyAbout; ?></td></tr>
+                        -->
 
                         <tr><td align="right"><input class="button button-accent" type="submit" value="Submit"></td></tr>
 
