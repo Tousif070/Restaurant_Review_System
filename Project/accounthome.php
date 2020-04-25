@@ -49,7 +49,7 @@
                                 <a href="">Profile</a>
                             </div>
                             <div class="anchor">
-                                <a href="usersettings.php">Settings</a>
+                                <a href="settings.php">Settings</a>
                             </div>
                             <div class="anchor">
                                 <a href="control_logic/logout.php">Logout</a>

@@ -97,19 +97,87 @@ section::after {
     clear: both;
 }
 
-/* THIS ACCOUNTHOME2 PAGE SECTION - 1 ACTS AS THE BACKGROUND STYLE FOR THE HEADER */
+/* THIS ACCOUNTHOME PAGE SECTION - 1 ACTS AS THE BACKGROUND STYLE FOR THE HEADER */
 
-.accounthome2-page-section-1 {
+.usersettings-page-section-1 {
     background: #232323;
     padding: 53px;
 }
 
-/* ACCOUNTHOME2 PAGE SECTION - 2 STYLE */
+/* ACCOUNTHOME PAGE SECTION - 2 STYLE */
 
-.accounthome2-page-section-2 {
+.usersettings-page-section-2 {
     background: #FFF6EB;
     padding: 100px 0;
-    height: 700px;
+    height: 500px;
+}
+
+/* SUCCESSFUL CHANGES MESSAGE STYLE */
+
+.successful-message {
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    color: #009F25;
+    padding-top: 8px;
+}
+
+/* FORM STYLE */
+
+.form-container {
+    margin: auto;
+    max-width: 30%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.form-container h1 {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.label {
+    font-weight: 700;
+}
+
+table {
+    margin: auto;
+    width: 60%;
+}
+
+td {
+    padding: 2px;
+}
+
+.error-messages {
+    font-size: 14px;
+    font-weight: 500;
+    color: #D1151F;
+}
+
+textarea {
+    font-family: 'Raleway';
+}
+
+input[type="text"], input[type="password"] {
+    font-size: 16px;
+    width: 100%;
+    padding: 3px;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #D16715;
+    outline-width: thin;
+    outline-style: solid;
+    outline-color: #D16715;
 }
 
 /* BUTTON STYLE */

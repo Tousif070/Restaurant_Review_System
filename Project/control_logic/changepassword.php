@@ -6,14 +6,22 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $id=$_COOKIE["userID"];
+        if(isset($_COOKIE["userID"]))
+        {
+            $id=$_COOKIE["userID"];
+        }
+        else if(isset($_COOKIE["restaurantID"]))
+        {
+            $id=$_COOKIE["restaurantID"];
+        }
+
         $password=$_POST["password"];
 
         $password=filter_var($password, FILTER_SANITIZE_STRING);
 
         if(strlen($password) < 8)
         {
-            header("Location:../usersettings.php?PasswordError=Password Should Be Minimum Of 8 Characters !");
+            header("Location:../settings.php?PasswordError=Password Should Be Minimum Of 8 Characters !");
         }
         else
         {
@@ -25,7 +33,7 @@
             executeQuery($query);
             closeDatabaseConnection();
 
-            header("Location:../usersettings.php?passwordChangeSuccess=1");
+            header("Location:../settings.php?passwordChangeSuccess=1");
         }
     }
 ?>
