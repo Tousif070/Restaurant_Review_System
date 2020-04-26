@@ -97,7 +97,7 @@
 
 
 
-        <!-- SIGN UP FORM FOR THE USERS -->
+        <!-- FORMS TO MAKE SOME CHANGES -->
 
         <section class="usersettings-page-section-2">
 
