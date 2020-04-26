@@ -154,11 +154,13 @@
                         <!-- PASSWORD -->
                         <tr><td class="label">New Password:</td></tr>
                         <tr><td><input id="password" type="password" name="password" value="<?php echo $password; ?>"></td></tr>
+                        <tr><td class="caution-messages">Only Letters & Numbers</td></tr>
                         <tr><td id="errorPassword" class="error-messages"><?php echo $emptyPassword.$errorPassword; ?></td></tr>
 
                         <!-- REPEAT PASSWORD -->
                         <tr><td class="label">Repeat New Password:</td></tr>
                         <tr><td><input id="repeatPassword" type="password" name="repeatPassword" value="<?php echo $repeatPassword; ?>"></td></tr>
+                        <tr><td class="caution-messages">Only Letters & Numbers</td></tr>
                         <tr><td id="errorRepeatPassword" class="error-messages"><?php echo $emptyRepeatPassword.$errorRepeatPassword; ?></td></tr>
 
                         <tr><td align="right"><input class="button button-accent" type="submit" value="Save"></td></tr>

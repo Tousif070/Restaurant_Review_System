@@ -297,7 +297,7 @@
                 <h1>
                     Create your restaurant account
                 </h1>
-                <form action="" method="post">
+                <form action="" method="post" onsubmit="return invalidCharacters()">
                     <table>
 
                         <!-- NAME OF THE RESTAURANT -->
@@ -308,16 +308,19 @@
                         <!-- USERNAME -->
                         <tr><td class="label">Username:</td></tr>
                         <tr><td><input id="username" type="text" name="username" onkeyup="checkUsername()" value="<?php echo $username; ?>"></td></tr>
+                        <tr><td class="caution-messages">Only Letters & Numbers</td></tr>
                         <tr><td id="errorUsername" class="error-messages"><?php echo $emptyUsername.$errorUsername; ?></td></tr>
 
                         <!-- PASSWORD -->
                         <tr><td class="label">Password:</td></tr>
                         <tr><td><input id="password" type="password" name="password" onkeyup="checkPassword()" value="<?php echo $password; ?>"></td></tr>
+                        <tr><td class="caution-messages">Only Letters & Numbers</td></tr>
                         <tr><td id="errorPassword" class="error-messages"><?php echo $emptyPassword.$errorPassword; ?></td></tr>
 
                         <!-- REPEAT PASSWORD -->
                         <tr><td class="label">Repeat Password:</td></tr>
                         <tr><td><input id="repeatPassword" type="password" name="repeatPassword" onkeyup="checkRepeatPassword()" value="<?php echo $repeatPassword; ?>"></td></tr>
+                        <tr><td class="caution-messages">Only Letters & Numbers</td></tr>
                         <tr><td id="errorRepeatPassword" class="error-messages"><?php echo $emptyRepeatPassword.$errorRepeatPassword; ?></td></tr>
 
                         <!-- BRANCH NAME -->

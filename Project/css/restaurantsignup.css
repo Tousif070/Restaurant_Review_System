@@ -110,6 +110,12 @@ td {
     padding: 2px;
 }
 
+.caution-messages {
+    font-size: 11px;
+    font-weight: 500;
+    color: #FF701F;
+}
+
 .error-messages {
     font-size: 14px;
     font-weight: 500;
