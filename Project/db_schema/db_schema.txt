@@ -49,6 +49,9 @@ ALTER TABLE restaurants ADD CONSTRAINT fk_profile_photo_id2 FOREIGN KEY (profile
 
 ALTER TABLE restaurants ADD CONSTRAINT fk_menu_photo_id FOREIGN KEY (menu_photo_id) REFERENCES photos (id);
 
+ALTER TABLE photos ADD width int(5);
+ALTER TABLE photos ADD height int(5);
+
 ///////////////////////////// MYSQL QUERY TIPS //////////////////////////////////
 
 Date & Time Format: Date and time can be retrieved with the select query using the format shown below.
