@@ -89,3 +89,16 @@ function checkPhotoSize()
         return true;
     }
 }
+
+function showAllPosts(id)
+{
+    var ajax=new XMLHttpRequest();
+    ajax.onreadystatechange=function(){
+        if(ajax.readyState == 4 && ajax.status == 200)
+        {
+            document.getElementById("allPosts").innerHTML=ajax.responseText;
+        }
+    };
+    ajax.open("GET", "control_logic/showallposts.php?id=" + id, true);
+    ajax.send();
+}

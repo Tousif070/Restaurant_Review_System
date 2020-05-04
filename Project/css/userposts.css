@@ -109,16 +109,6 @@ section::after {
 .userposts-page-section-2 {
     background: #FFF6EB;
     padding: 50px 0;
-    height: 700px;
-}
-
-/* POST CREATION SUCCESS MESSAGE */
-
-.successful-message {
-    text-transform: capitalize;
-    font-size: 20px;
-    font-weight: 500;
-    color: #009F25;
 }
 
 /* FORM STYLE */
@@ -185,7 +175,16 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
     outline-color: #D16715;
 }
 
-/* FOR POSTS */
+/* POST CREATION SUCCESS MESSAGE */
+
+.successful-message {
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 500;
+    color: #009F25;
+}
+
+/* FOR POST UPLOAD */
 
 .post-feature-clicks {
     cursor: pointer;
@@ -218,6 +217,68 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 
 .items:hover {
     background-color: #FFC19E;
+}
+
+/* FOR POST VIEWING */
+
+.posts-container {
+    margin: auto;
+    max-width: 700px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+
+.posts-container h1 {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.post-username-heading {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 0;
+}
+
+.post-username {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.post-restaurant {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.post-datetime {
+    font-family: sans-serif;
+    font-size: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 0;
+    padding-bottom: 15px;
+}
+
+.post-text {
+    font-weight: 500;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+
+.post-images {
+    padding: 0 150px;
+}
+
+.post-hr {
+    width: 95%;
+    height: 2px;
+    background: black;
+    margin-top: 30px;
+    margin-bottom: 60px;
 }
 
 /* BUTTON STYLE */

@@ -32,7 +32,7 @@
         <script src="js/userposts.js"></script>
     </head>
 
-    <body>
+    <body onload="showAllPosts(<?php echo $id; ?>)">
 
         <header>
             <a class="logo" href="accounthome.php">
@@ -112,7 +112,16 @@
 
             <!-- POST VIEWING -->
 
+            <div class="posts-container">
+                <h1>
+                    your posts
+                </h1>
 
+                <div id="allPosts">
+
+                </div>
+
+            </div>
 
 
         </section>
