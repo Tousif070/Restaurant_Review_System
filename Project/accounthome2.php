@@ -43,7 +43,7 @@
                         <span class="username"><?php echo $username; ?></span>
                         <div class="dropdown-content">
                             <div class="anchor">
-                                <a href="">Posts</a>
+                                <a href="restaurantposts.php">Posts</a>
                             </div>
                             <div class="anchor">
                                 <a href="">Profile</a>

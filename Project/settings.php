@@ -63,7 +63,7 @@
     <body>
 
         <header>
-            <a class="logo" href="control_logic/redirection.php">
+            <a class="logo" href="control_logic/redirection.php?destination=1">
                 <img src="images/logo.png" alt="Eat&Rate.com Logo" height="100" width="420">
             </a>
             <nav>
@@ -72,7 +72,7 @@
                         <span class="username"><?php echo $username; ?></span>
                         <div class="dropdown-content">
                             <div class="anchor">
-                                <a href="userposts.php">Posts</a>
+                                <a href="control_logic/redirection.php?destination=2">Posts</a>
                             </div>
                             <div class="anchor">
                                 <a href="">Profile</a>
