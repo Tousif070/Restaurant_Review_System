@@ -29,7 +29,7 @@
     <head>
         <title>Posts</title>
         <link rel="stylesheet" type="text/css" href="css/userposts.css">
-        <script src="js/userposts.js"></script>
+        <script src="js/posts.js"></script>
     </head>
 
     <body onload="showAllPosts(<?php echo $id; ?>)">

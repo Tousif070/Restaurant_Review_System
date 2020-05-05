@@ -8,7 +8,7 @@
     createDatabaseConnection();
 
     $query1="select username from login where id=$id";
-    $query2="select post_text, DATE_FORMAT(date_and_time, '%d-%b-%y %h:%i %p') as 'datetime', photo_id, restaurant_id from posts where account_id=$id order by datetime desc";
+    $query2="select post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts where account_id=$id order by DATE_FORMAT(date_and_time, '%d-%b-%y %h:%i:%s %p') desc";
 
     $result=executeAndGetQuery($query1);
     $postResults=executeAndGetQuery($query2);
