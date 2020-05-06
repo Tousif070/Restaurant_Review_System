@@ -46,7 +46,7 @@
                                 <a href="userposts.php">Posts</a>
                             </div>
                             <div class="anchor">
-                                <a href="">Profile</a>
+                                <a href="userprofile.php">Profile</a>
                             </div>
                             <div class="anchor">
                                 <a href="settings.php">Settings</a>

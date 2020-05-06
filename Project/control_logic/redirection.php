@@ -9,7 +9,7 @@
             {
                 header("Location:../accounthome.php");
             }
-            else if($_COOKIE["restaurantID"])
+            else if(isset($_COOKIE["restaurantID"]))
             {
                 header("Location:../accounthome2.php");
             }
@@ -21,7 +21,7 @@
             {
                 header("Location:../userposts.php");
             }
-            else if($_COOKIE["restaurantID"])
+            else if(isset($_COOKIE["restaurantID"]))
             {
                 header("Location:../restaurantposts.php");
             }
@@ -29,7 +29,14 @@
         else if($_GET["destination"] == 3)
         {
             // FOR GOING TO PROFILE
-
+            if(isset($_COOKIE["userID"]))
+            {
+                header("Location:../userprofile.php");
+            }
+            else if(isset($_COOKIE["restaurantID"]))
+            {
+                header("Location:../restaurantprofile.php");
+            }
         }
     }
 

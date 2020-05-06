@@ -5,9 +5,9 @@
     $id="";
     $username="";
 
-    if(isset($_COOKIE["restaurantID"]))
+    if(isset($_COOKIE["userID"]))
     {
-        $id=$_COOKIE["restaurantID"];
+        $id=$_COOKIE["userID"];
 
         $query="select username from login where id='$id'";
 
@@ -27,14 +27,14 @@
 <html>
 
     <head>
-        <title><?php echo $username; ?></title>
-        <link rel="stylesheet" type="text/css" href="css/accounthome2.css">
+        <title>Profile</title>
+        <link rel="stylesheet" type="text/css" href="css/userprofile.css">
     </head>
 
     <body>
 
         <header>
-            <a class="logo" href="accounthome2.php">
+            <a class="logo" href="accounthome.php">
                 <img src="images/logo.png" alt="Eat&Rate.com Logo" height="100" width="420">
             </a>
             <nav>
@@ -43,10 +43,10 @@
                         <span class="username"><?php echo $username; ?></span>
                         <div class="dropdown-content">
                             <div class="anchor">
-                                <a href="restaurantposts.php">Posts</a>
+                                <a href="userposts.php">Posts</a>
                             </div>
                             <div class="anchor">
-                                <a href="restaurantprofile.php">Profile</a>
+                                <a href="userprofile.php">Profile</a>
                             </div>
                             <div class="anchor">
                                 <a href="settings.php">Settings</a>
@@ -61,18 +61,18 @@
         </header>
 
 
-        <section class="accounthome2-page-section-1">
+        <section class="userprofile-page-section-1">
             <!-- THIS SECTION OVERLAPS WITH THE HEADER AND ACTS AS A BACKGROUND -->
             <!-- THE HEADER FLOATS OVER THIS SECTION -->
         </section>
 
 
 
-        <!-- ACCOUNT HOME NEWSFEED -->
+        <!-- PROFILE CONTENTS -->
 
-        <section class="accounthome2-page-section-2">
+        <section class="userprofile-page-section-2">
 
-            <!-- THE NEWSFEED LAYOUT WILL BE GIVEN HERE -->
+
 
         </section>
 

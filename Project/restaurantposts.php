@@ -47,7 +47,7 @@
                                 <a href="restaurantposts.php">Posts</a>
                             </div>
                             <div class="anchor">
-                                <a href="">Profile</a>
+                                <a href="restaurantprofile.php">Profile</a>
                             </div>
                             <div class="anchor">
                                 <a href="settings.php">Settings</a>

@@ -27,8 +27,8 @@
 <html>
 
     <head>
-        <title><?php echo $username; ?></title>
-        <link rel="stylesheet" type="text/css" href="css/accounthome2.css">
+        <title>Profile</title>
+        <link rel="stylesheet" type="text/css" href="css/restaurantprofile.css">
     </head>
 
     <body>
@@ -61,18 +61,18 @@
         </header>
 
 
-        <section class="accounthome2-page-section-1">
+        <section class="restaurantprofile-page-section-1">
             <!-- THIS SECTION OVERLAPS WITH THE HEADER AND ACTS AS A BACKGROUND -->
             <!-- THE HEADER FLOATS OVER THIS SECTION -->
         </section>
 
 
 
-        <!-- ACCOUNT HOME NEWSFEED -->
+        <!-- PROFILE CONTENTS -->
 
-        <section class="accounthome2-page-section-2">
+        <section class="restaurantprofile-page-section-2">
 
-            <!-- THE NEWSFEED LAYOUT WILL BE GIVEN HERE -->
+            
 
         </section>
 

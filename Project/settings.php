@@ -75,7 +75,7 @@
                                 <a href="control_logic/redirection.php?destination=2">Posts</a>
                             </div>
                             <div class="anchor">
-                                <a href="">Profile</a>
+                                <a href="control_logic/redirection.php?destination=3">Profile</a>
                             </div>
                             <div class="anchor">
                                 <a href="settings.php">Settings</a>
