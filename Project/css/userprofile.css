@@ -108,8 +108,113 @@ section::after {
 
 .userprofile-page-section-2 {
     background: #FFF6EB;
-    padding: 100px 0;
-    height: 700px;
+    padding: 50px 0;
+}
+
+/* FORM STYLE */
+
+.form-container {
+    margin: auto;
+    max-width: 700px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+}
+
+.form-container2 {
+    margin: auto;
+    max-width: 700px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    margin-top: 50px;
+    padding-bottom: 20px;
+}
+
+.form-container2 h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px;
+}
+
+.info {
+    font-size: 18px;
+    padding: 5px;
+}
+
+td {
+    padding: 2px;
+}
+
+.caution-messages {
+    font-size: 11px;
+    font-weight: 500;
+    color: #FF701F;
+}
+
+.error-messages {
+    font-size: 14px;
+    font-weight: 500;
+    color: #D1151F;
+}
+
+textarea {
+    font-family: 'Raleway';
+}
+
+input[type="text"], input[type="password"], select, textarea {
+    font-size: 16px;
+    width: 100%;
+    padding: 3px;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+    border-color: #D16715;
+    outline-width: thin;
+    outline-style: solid;
+    outline-color: #D16715;
+}
+
+/* PROFILE PHOTO UPLOAD SUCCESS MESSAGE */
+
+.successful-message {
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 500;
+    color: #009F25;
+}
+
+/* FOR PROFILE DESIGN */
+
+.profile-feature-clicks {
+    cursor: pointer;
+    font-size: 18px;
+    color: #D16715;
+    background-color: #FFF6EB;
+    border: none;
+    outline: none;
+    padding-left: 0;
+}
+
+.profile-feature-clicks:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.profile-photo {
+    padding: 0 150px;
 }
 
 /* BUTTON STYLE */
@@ -120,7 +225,7 @@ section::after {
     font-size: 15px;
     font-weight: 700;
     padding: 3px 20px;
-    margin: 10px 0 10px 20px;
+    margin: 10px 20px 10px 0;
     border-style: solid;
     border-width: 2px;
     border-radius: 3px;

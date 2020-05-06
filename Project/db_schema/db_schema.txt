@@ -72,6 +72,16 @@ CREATE TABLE unique_file_id(
     status varchar(100)
 );
 
+CREATE TABLE following(
+	id int(10) PRIMARY KEY AUTO_INCREMENT,
+    account_id int(10),
+    following_id int(10)
+);
+
+ALTER TABLE following ADD CONSTRAINT fk_account_id3 FOREIGN KEY (account_id) REFERENCES login (id);
+
+ALTER TABLE following ADD CONSTRAINT fk_following_id FOREIGN KEY (following_id) REFERENCES login (id);
+
 
 
 
