@@ -3,35 +3,41 @@
     require "dbconnect.php";
 
     $id=$_GET["id"];
-    $username="";
+    $followingID="";
 
-    $query1="select username from login where id=$id";
-    $query2="select post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts where account_id=$id order by DATE_FORMAT(date_and_time, '%d-%b-%y %T') desc";
+    $query1="select following_id from following where account_id=$id";
 
     createDatabaseConnection();
 
     $result=executeAndGetQuery($query1);
-    $postResults=executeAndGetQuery($query2);
 
-    if(count($postResults) == 0)
+    if(count($result) == 0)
     {
-        echo "<div style='font-size: 18px; padding: 20px;'>You Have Not Created Any Posts Yet !</div>";
+        echo "<div style='font-size: 18px; padding: 20px; height: 500px;'>Follow Food Bloggers & Restaurants To See Their Posts/Activity !</div>";
         closeDatabaseConnection();
         exit;
     }
 
-    $username=$result[0]["username"];
-
-    for($i=0; $i<count($postResults); $i++)
+    $followingID=$result[0]["following_id"];
+    for($i=1; $i<count($result); $i++)
     {
-        $rs=$postResults[$i];
+        $followingID=$followingID.", ".$result[$i]["following_id"];
+    }
+
+    $query2="select login.username as 'username', post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts join login on login.id=account_id where account_id in ($followingID) order by DATE_FORMAT(date_and_time, '%d-%b-%y %T') desc";
+
+    $newsfeedResults=executeAndGetQuery($query2);
+
+    for($i=0; $i<count($newsfeedResults); $i++)
+    {
+        $rs=$newsfeedResults[$i];
 
         echo "<table>";
 
         if($rs["restaurant_id"] == null)
         {
             echo "<tr><td class='post-username-heading'>";
-            echo "<span class='post-username'>".$username."</span>";
+            echo "<span class='post-username'>".$rs['username']."</span>";
             echo "</td></tr>";
         }
         else
@@ -42,7 +48,7 @@
             $restaurantName=$result[0]["restaurant_name"];
 
             echo "<tr><td class='post-username-heading'>";
-            echo "<span class='post-username'>".$username."</span> mentioned <span class='post-restaurant'>".$restaurantName."</span>";
+            echo "<span class='post-username'>".$rs['username']."</span> mentioned <span class='post-restaurant'>".$restaurantName."</span>";
             echo "</td></tr>";
         }
 

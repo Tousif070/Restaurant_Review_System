@@ -2,8 +2,7 @@
 
     require "control_logic/dbconnect.php";
 
-    $id="";
-    $username="";
+    $id=$username="";
 
     if(isset($_COOKIE["userID"]))
     {
@@ -15,8 +14,7 @@
         $result=executeAndGetQuery($query);
         closeDatabaseConnection();
 
-        $rs=$result[0];
-        $username=$rs["username"];
+        $username=$result[0]["username"];
     }
     else
     {
@@ -29,9 +27,10 @@
     <head>
         <title><?php echo $username; ?></title>
         <link rel="stylesheet" type="text/css" href="css/accounthome.css">
+        <script src="js/accounthome.js"></script>
     </head>
 
-    <body>
+    <body onload="loadNewsfeed(<?php echo $id; ?>)">
 
         <header>
             <a class="logo" href="accounthome.php">
@@ -72,7 +71,9 @@
 
         <section class="accounthome-page-section-2">
 
-            <!-- THE NEWSFEED LAYOUT WILL BE GIVEN HERE -->
+            <div id="newsfeed" class="newsfeed-container">
+
+            </div>
 
         </section>
 
