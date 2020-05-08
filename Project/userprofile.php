@@ -3,7 +3,7 @@
     require "control_logic/dbconnect.php";
 
     $id=$username=$directory=$width=$height="";
-    $firstname=$lastname=$gender=$dateOfBirth=$email=$location="hahahahaha";
+    $firstname=$lastname=$gender=$dateOfBirth=$email=$location="";
     $following=$followers=0;
 
     if(isset($_COOKIE["userID"]))
@@ -40,7 +40,7 @@
             $height=500;
         }
 
-        // LOADING THE PERSONAL INFORMATION
+        // LOADING PERSONAL INFORMATION
         $firstname=$result3[0]["firstname"];
         $lastname=$result3[0]["lastname"];
         $gender=$result3[0]["gender"];

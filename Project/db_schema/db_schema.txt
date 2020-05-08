@@ -82,6 +82,17 @@ ALTER TABLE following ADD CONSTRAINT fk_account_id3 FOREIGN KEY (account_id) REF
 
 ALTER TABLE following ADD CONSTRAINT fk_following_id FOREIGN KEY (following_id) REFERENCES login (id);
 
+CREATE TABLE ratings(
+	id int(10) PRIMARY KEY AUTO_INCREMENT,
+    restaurant_id int(10),
+    rating int(1),
+    account_id int(10)
+);
+
+ALTER TABLE ratings ADD CONSTRAINT fk_restaurant_id2 FOREIGN KEY (restaurant_id) REFERENCES restaurants (id);
+
+ALTER TABLE ratings ADD CONSTRAINT fk_account_id4 FOREIGN KEY (account_id) REFERENCES general_users (id);
+
 
 
 
