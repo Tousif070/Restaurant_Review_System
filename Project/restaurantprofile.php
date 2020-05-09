@@ -11,7 +11,7 @@
     {
         $id=$_COOKIE["restaurantID"];
 
-        $query1="select username from login where id='$id'";
+        $query1="select username from login where id=$id";
         $query2="select restaurant_name, branch_name, address, DATE_FORMAT(established_in, '%d-%b-%Y') as 'establishedin', email, about from restaurants where id=$id";
         $query3="select storage_location, width, height from photos where id=(select profile_photo_id from restaurants where id=$id);";
         $query4="select storage_location, width, height from photos where id=(select menu_photo_id from restaurants where id=$id);";
@@ -94,7 +94,7 @@
 
         <header>
             <a class="logo" href="accounthome2.php">
-                <img src="images/logo.png" alt="Eat&Rate.com Logo" height="100" width="420">
+                <img src="images/logo.png" alt="Eat&Rate.com Logo" height="50" width="220">
             </a>
             <nav>
                 <ul>

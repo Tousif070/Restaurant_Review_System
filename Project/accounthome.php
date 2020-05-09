@@ -8,7 +8,7 @@
     {
         $id=$_COOKIE["userID"];
 
-        $query="select username from login where id='$id'";
+        $query="select username from login where id=$id";
 
         createDatabaseConnection();
         $result=executeAndGetQuery($query);
@@ -34,7 +34,7 @@
 
         <header>
             <a class="logo" href="accounthome.php">
-                <img src="images/logo.png" alt="Eat&Rate.com Logo" height="100" width="420">
+                <img src="images/logo.png" alt="Eat&Rate.com Logo" height="50" width="220">
             </a>
             <nav>
                 <ul>

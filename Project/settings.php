@@ -10,7 +10,7 @@
     {
         $id=$_COOKIE["userID"];
 
-        $query1="select username from login where id='$id'";
+        $query1="select username from login where id=$id";
         //$query2="select email from general_users where id='$id'";
 
         createDatabaseConnection();
@@ -64,7 +64,7 @@
 
         <header>
             <a class="logo" href="control_logic/redirection.php?destination=1">
-                <img src="images/logo.png" alt="Eat&Rate.com Logo" height="100" width="420">
+                <img src="images/logo.png" alt="Eat&Rate.com Logo" height="50" width="220">
             </a>
             <nav>
                 <ul>

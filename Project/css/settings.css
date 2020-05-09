@@ -13,10 +13,11 @@ body {
 /* HEADER STYLE */
 
 header {
-    margin: 15px;
-    position: absolute;
+    padding: 15px 15px 2px 20px;
+    position: fixed;
     left: 0;
     right: 0;
+    background: #232323;
 }
 
 .logo {
@@ -34,7 +35,8 @@ nav ul {
 nav li {
     position: relative;
     display: inline-block;
-    margin: 10px;
+    margin: -12px;
+    margin-right: 10;
 }
 
 /* STYLE FOR THE DROPDOWN */
@@ -57,17 +59,18 @@ nav li {
 }
 
 .dropdown-content a {
+    display: inline-block;
     font-size: 20px;
     color: #232323;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
+    padding: 5px 15px 5px 15px;
+    width: 115px;
 }
 
-.dropdown-content .anchor {
+.anchor {
     background-color: #FFF6EB;
-    width: 110px;
-    padding: 5px 15px 5px 15px;
     margin: 7px 0;
     border-radius: 3px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
@@ -100,8 +103,8 @@ section::after {
 /* THIS ACCOUNTHOME PAGE SECTION - 1 ACTS AS THE BACKGROUND STYLE FOR THE HEADER */
 
 .usersettings-page-section-1 {
-    background: #232323;
-    padding: 53px;
+    background: crimson;
+    padding: 30px;
 }
 
 /* ACCOUNTHOME PAGE SECTION - 2 STYLE */
@@ -109,7 +112,7 @@ section::after {
 .usersettings-page-section-2 {
     background: #FFF6EB;
     padding: 100px 0;
-    height: 550px;
+    height: 600px;
 }
 
 /* SUCCESSFUL CHANGES MESSAGE STYLE */
