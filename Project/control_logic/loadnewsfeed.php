@@ -24,7 +24,7 @@
         $followingID=$followingID.", ".$result[$i]["following_id"];
     }
 
-    $query2="select login.username as 'username', post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts join login on login.id=account_id where account_id in ($followingID) order by DATE_FORMAT(date_and_time, '%d-%b-%y %T') desc";
+    $query2="select login.username as 'username', account_id, post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts join login on login.id=account_id where account_id in ($followingID) order by DATE_FORMAT(date_and_time, '%d-%b-%y %T') desc";
 
     $newsfeedResults=executeAndGetQuery($query2);
 
@@ -32,12 +32,14 @@
     {
         $rs=$newsfeedResults[$i];
 
+        $profileID=$rs["account_id"];
+
         echo "<table>";
 
         if($rs["restaurant_id"] == null)
         {
             echo "<tr><td class='post-username-heading'>";
-            echo "<span class='post-username'>".$rs['username']."</span>";
+            echo "<a href='control_logic/profileviewredirection.php?profileID=$profileID' class='post-username'>".$rs['username']."</a>";
             echo "</td></tr>";
         }
         else
@@ -48,7 +50,7 @@
             $restaurantName=$result[0]["restaurant_name"];
 
             echo "<tr><td class='post-username-heading'>";
-            echo "<span class='post-username'>".$rs['username']."</span> mentioned <span class='post-restaurant'>".$restaurantName."</span>";
+            echo "<a href='control_logic/profileviewredirection.php?profileID=$profileID' class='post-username'>".$rs['username']."</a> mentioned <a href='control_logic/profileviewredirection.php?profileID=$restaurantID' class='post-restaurant'>".$restaurantName."</a>";
             echo "</td></tr>";
         }
 
