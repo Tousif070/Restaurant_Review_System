@@ -5,12 +5,10 @@
     $id=$_GET["id"];
     $username="";
 
-    $query1="select username from login where id=$id";
     $query2="select post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts where account_id=$id order by DATE_FORMAT(date_and_time, '%d-%b-%y %T') desc";
 
     createDatabaseConnection();
 
-    $result=executeAndGetQuery($query1);
     $postResults=executeAndGetQuery($query2);
 
     if(count($postResults) == 0)
@@ -20,7 +18,27 @@
         exit;
     }
 
-    $username=$result[0]["username"];
+
+
+    $query11="select firstname from general_users where id=$id";
+    $query12="select restaurant_name, branch_name from restaurants where id=$id";
+
+    $result11=executeAndGetQuery($query11);
+    $result12=executeAndGetQuery($query12);
+
+    if(count($result11) == 1)
+    {
+        $query1="select username from login where id=$id";
+        $result1=executeAndGetQuery($query1);
+        $username=$result1[0]["username"];
+    }
+    else if(count($result12) == 1)
+    {
+        $username=$result12[0]["restaurant_name"].", ".$result12[0]["branch_name"];
+    }
+
+
+
 
     for($i=0; $i<count($postResults); $i++)
     {
@@ -37,12 +55,13 @@
         else
         {
             $restaurantID=$rs["restaurant_id"];
-            $query="select restaurant_name from restaurants where id=$restaurantID";
+            $query="select restaurant_name, branch_name from restaurants where id=$restaurantID";
             $result=executeAndGetQuery($query);
             $restaurantName=$result[0]["restaurant_name"];
+            $branchName=$result[0]["branch_name"];
 
             echo "<tr><td class='post-username-heading'>";
-            echo "<span class='post-username'>".$username."</span> mentioned <span class='post-restaurant'>".$restaurantName."</span>";
+            echo "<span class='post-username'>".$username."</span> mentioned <a href='control_logic/profileviewredirection.php?profileID=$restaurantID' class='post-restaurant'>".$restaurantName.", ".$branchName."</a>";
             echo "</td></tr>";
         }
 

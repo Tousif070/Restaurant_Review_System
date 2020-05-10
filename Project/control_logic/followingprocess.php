@@ -4,13 +4,26 @@
 
     $accountID="";
     $id=$_GET["id"];
-
-    $query="select username from login where id=$id";
+    $profileUsername="";
 
     createDatabaseConnection();
 
-    $result=executeAndGetQuery($query);
-    $profileUsername=$result[0]["username"];
+    $query11="select firstname from general_users where id=$id";
+    $query12="select restaurant_name, branch_name from restaurants where id=$id";
+
+    $result11=executeAndGetQuery($query11);
+    $result12=executeAndGetQuery($query12);
+
+    if(count($result11) == 1)
+    {
+        $query1="select username from login where id=$id";
+        $result1=executeAndGetQuery($query1);
+        $profileUsername=$result1[0]["username"];
+    }
+    else if(count($result12) == 1)
+    {
+        $profileUsername=$result12[0]["restaurant_name"].", ".$result12[0]["branch_name"];
+    }
 
     if(isset($_COOKIE["userID"]))
     {

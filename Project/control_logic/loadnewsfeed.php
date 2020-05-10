@@ -4,6 +4,7 @@
 
     $id=$_GET["id"];
     $followingID="";
+    $username="";
 
     $query1="select following_id from following where account_id=$id";
 
@@ -28,29 +29,56 @@
 
     $newsfeedResults=executeAndGetQuery($query2);
 
+    if(count($newsfeedResults) == 0)
+    {
+        echo "<div style='font-size: 18px; padding: 20px; height: 500px;'>No Posts From Anyone Yet !</div>";
+        closeDatabaseConnection();
+        exit;
+    }
+
     for($i=0; $i<count($newsfeedResults); $i++)
     {
         $rs=$newsfeedResults[$i];
 
         $profileID=$rs["account_id"];
 
+
+
+        $query11="select firstname from general_users where id=$profileID";
+        $query12="select restaurant_name, branch_name from restaurants where id=$profileID";
+
+        $result11=executeAndGetQuery($query11);
+        $result12=executeAndGetQuery($query12);
+
+        if(count($result11) == 1)
+        {
+            $username=$rs["username"];
+        }
+        else if(count($result12) == 1)
+        {
+            $username=$result12[0]["restaurant_name"].", ".$result12[0]["branch_name"];
+        }
+
+
+
         echo "<table>";
 
         if($rs["restaurant_id"] == null)
         {
             echo "<tr><td class='post-username-heading'>";
-            echo "<a href='control_logic/profileviewredirection.php?profileID=$profileID' class='post-username'>".$rs['username']."</a>";
+            echo "<a href='control_logic/profileviewredirection.php?profileID=$profileID' class='post-username'>".$username."</a>";
             echo "</td></tr>";
         }
         else
         {
             $restaurantID=$rs["restaurant_id"];
-            $query="select restaurant_name from restaurants where id=$restaurantID";
+            $query="select restaurant_name, branch_name from restaurants where id=$restaurantID";
             $result=executeAndGetQuery($query);
             $restaurantName=$result[0]["restaurant_name"];
+            $branchName=$result[0]["branch_name"];
 
             echo "<tr><td class='post-username-heading'>";
-            echo "<a href='control_logic/profileviewredirection.php?profileID=$profileID' class='post-username'>".$rs['username']."</a> mentioned <a href='control_logic/profileviewredirection.php?profileID=$restaurantID' class='post-restaurant'>".$restaurantName."</a>";
+            echo "<a href='control_logic/profileviewredirection.php?profileID=$profileID' class='post-username'>".$username."</a> mentioned <a href='control_logic/profileviewredirection.php?profileID=$restaurantID' class='post-restaurant'>".$restaurantName.", ".$branchName."</a>";
             echo "</td></tr>";
         }
 

@@ -13,8 +13,8 @@
 
         $query1="select username from login where id=$id";
         $query2="select restaurant_name, branch_name, address, DATE_FORMAT(established_in, '%d-%b-%Y') as 'establishedin', email, about from restaurants where id=$id";
-        $query3="select storage_location, width, height from photos where id=(select profile_photo_id from restaurants where id=$id);";
-        $query4="select storage_location, width, height from photos where id=(select menu_photo_id from restaurants where id=$id);";
+        $query3="select storage_location, width, height from photos where id=(select profile_photo_id from restaurants where id=$id)";
+        $query4="select storage_location, width, height from photos where id=(select menu_photo_id from restaurants where id=$id)";
         $query5="select count(account_id) as 'following' from following where account_id=$id";
         $query6="select count(following_id) as 'followers' from following where following_id=$id";
         $query7="select format(avg(rating), 1) as 'rating' from ratings where restaurant_id=$id";

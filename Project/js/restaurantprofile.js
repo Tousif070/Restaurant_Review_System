@@ -81,6 +81,7 @@ function editAboutRestaurant()
     if(text == "")
     {
         document.getElementById("errorAbout").innerHTML="Your About Section Can Not Be Empty !";
+        document.getElementById("errorAbout").style.color="#D1151F";
     }
     else
     {

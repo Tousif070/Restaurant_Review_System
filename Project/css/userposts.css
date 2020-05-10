@@ -254,6 +254,8 @@ input[type="text"]:focus, input[type="password"]:focus, select:focus, textarea:f
 .post-restaurant {
     font-size: 18px;
     font-weight: 700;
+    text-decoration: none;
+    color: black;
 }
 
 .post-datetime {
