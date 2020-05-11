@@ -136,7 +136,7 @@
                 <h1>
                     <?php echo $restaurantName."<br>"; ?>
                     <span style="font-size: 22px;"><?php echo $branchName; ?></span>
-                    <span style="font-size: 20px; display: block; margin-top: 10px;"><?php echo "Rating: ".$rating; ?></span>
+                    <span style="font-family: arial; font-size: 20px; display: block; margin-top: 10px;"><?php echo "Rating: ".$rating; ?></span>
                 </h1>
 
                 <!-- PROFILE PHOTO UPLOAD -->

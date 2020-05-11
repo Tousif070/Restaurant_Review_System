@@ -51,7 +51,7 @@
                 exit;
             }
         }
-        
+
         $query1="select username from login where id=$accountID";
         $query2="select storage_location, width, height from photos where id=(select profile_photo_id from general_users where id=$id);";
         $query3="select firstname, lastname, gender, DATE_FORMAT(date_of_birth, '%d-%b-%Y') as 'dateofbirth', email, location from general_users where id=$id";
@@ -162,18 +162,20 @@
                                 if(count($result5) == 1)
                                 {
                                     echo "<span style='font-size: 18px;'>You Are Following </span>";
-                                    echo "<span class='post-username'>".$profileUsername."</span><br>";
+                                    echo "<span class='post-username'>$profileUsername</span><br>";
                                     echo "<input class='button button-accent' style='margin: 15px 0 0 0' type='button' onclick='followProcess(0, $id)' value='Unfollow'>";
                                 }
                                 else if(count($result5) == 0)
                                 {
                                     echo "<span style='font-size: 18px;'>You Are Not Following </span>";
-                                    echo "<span class='post-username'>".$profileUsername."</span><br>";
+                                    echo "<span class='post-username'>$profileUsername</span><br>";
                                     echo "<input class='button button-accent' style='margin: 15px 0 0 0' type='button' onclick='followProcess(1, $id)' value='Follow'>";
                                 }
                             ?>
                         </td>
                     </tr>
+
+                    <tr><td align="center"><hr style="width: 95%; height: 2px; background: black; margin: 20px 0 0 0;"></td></tr>
 
                     <tr><td class="profile-photo" style="padding-top: 20px; padding-bottom: 10px;"><img src="<?php echo $directory; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" alt="Profile Picture"></td></tr>
                 </table>
