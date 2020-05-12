@@ -258,7 +258,7 @@
                         <td class="label">Address:</td><td class="info"><?php echo $address; ?></td>
                     </tr>
                     <tr>
-                        <td class="label">Established In:</td><td class="info"><?php echo $establishedIn; ?></td>
+                        <td class="label">Established In:</td><td class="info" style="font-family: arial;"><?php echo $establishedIn; ?></td>
                     </tr>
                     <tr>
                         <td class="label">Email:</td><td class="info"><?php echo $email; ?></td>

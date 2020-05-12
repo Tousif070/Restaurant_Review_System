@@ -5,10 +5,11 @@
     $dbPassword="";
     $dbName="eat_and_rate";
 
-    /*$servername="remotemysql.com";
-    $dbUsername="6MNIfyOxEA";
-    $dbPassword="eNZHsnf4pb";
-    $dbName="6MNIfyOxEA";
+    // TEMPORARY REMOTE SERVER
+    /*$servername="sql12.freesqldatabase.com";
+    $dbUsername="sql12339922";
+    $dbPassword="s66dqSxtKH";
+    $dbName="sql12339922";
     */
 
     $connection=0;

@@ -190,7 +190,7 @@
                         <td class="label">Gender:</td><td class="info"><?php echo $gender; ?></td>
                     </tr>
                     <tr>
-                        <td class="label">Date Of Birth:</td><td class="info"><?php echo $dateOfBirth; ?></td>
+                        <td class="label">Date Of Birth:</td><td class="info" style="font-family: arial;"><?php echo $dateOfBirth; ?></td>
                     </tr>
                     <tr>
                         <td class="label">Email:</td><td class="info"><?php echo $email; ?></td>
