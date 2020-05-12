@@ -25,7 +25,7 @@
         $followingID=$followingID.", ".$result[$i]["following_id"];
     }
 
-    $query2="select login.username as 'username', account_id, post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts join login on login.id=account_id where account_id in ($followingID) order by DATE_FORMAT(date_and_time, '%d-%b-%y %T') desc";
+    $query2="select login.username as 'username', posts.id as 'post_id', account_id, post_text, DATE_FORMAT(date_and_time, '%d-%b-%y &nbsp %h:%i %p') as 'datetime', photo_id, restaurant_id from posts join login on login.id=account_id where account_id in ($followingID) order by DATE_FORMAT(date_and_time, '%d-%b-%y %T') desc";
 
     $newsfeedResults=executeAndGetQuery($query2);
 
@@ -40,6 +40,7 @@
     {
         $rs=$newsfeedResults[$i];
 
+        $postID=$rs["post_id"];
         $profileID=$rs["account_id"];
 
 
@@ -103,6 +104,57 @@
             echo "<img src='$directory' width='$width', height='$height', alt='Associated Image For This Post'>";
             echo "</td></tr>";
         }
+
+
+
+
+
+
+        $likeButtonImageValue="images/likeoff.png";
+        $dislikeButtonImageValue="images/dislikeoff.png";
+
+        $query51="select like_dislike from likes_dislikes where post_id=$postID and account_id=$id";
+        $result51=executeAndGetQuery($query51);
+
+        if(count($result51) == 1)
+        {
+            if($result51[0]["like_dislike"] == 1)
+            {
+                $likeButtonImageValue="images/likeon.png";
+            }
+            else if($result51[0]["like_dislike"] == 0)
+            {
+                $dislikeButtonImageValue="images/dislikeon.png";
+            }
+        }
+
+        // FINDING THE NUMBER OF LIKES & DISLIKES
+        $likes=$dislikes="0";
+
+        $query52="select count(like_dislike) as 'likes' from likes_dislikes where post_id=$postID and like_dislike=1";
+        $query53="select count(like_dislike) as 'dislikes' from likes_dislikes where post_id=$postID and like_dislike=0";
+
+        $result52=executeAndGetQuery($query52);
+        $result53=executeAndGetQuery($query53);
+
+        $likes=$result52[0]["likes"];
+        $dislikes=$result53[0]["dislikes"];
+
+
+        // DISPLAYING LIKES & DISLIKES
+        echo "<tr><td id='$postID' style='padding: 10px 0 0 50px;'>";
+
+        echo "<span style='display: inline-block;'>";
+        echo "<img src=$likeButtonImageValue width='27' height='27' onclick='likeDislikeProcess(1, $postID)' style='cursor: pointer;' alt='Like Button Image'><br>";
+        echo "<span style='font-family: arial; font-size: 11px; display: inline-block; margin: 10px 0 0 0;'>$likes</span>";
+        echo "</span>";
+
+        echo "<span style='display: inline-block;'>";
+        echo "<img src=$dislikeButtonImageValue width='27' height='27' onclick='likeDislikeProcess(2, $postID)' style='margin-left: 40px; cursor: pointer;' alt='Dislike Button Image'><br>";
+        echo "<span style='font-family: arial; font-size: 11px; display: inline-block; margin: 10px 0 0 40px;'>$dislikes</span>";
+        echo "</span>";
+
+        echo "</td></tr>";
 
         echo "</table>";
         echo "<hr class='post-hr'>";

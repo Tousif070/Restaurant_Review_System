@@ -110,6 +110,7 @@
         <link rel="stylesheet" type="text/css" href="css/userposts.css">
         <script src="js/posts.js"></script>
         <script src="js/followingprocess.js"></script>
+        <script src="js/likedislikeprocess.js"></script>
     </head>
 
     <body onload="showAllPosts(<?php echo $id; ?>)">

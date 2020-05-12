@@ -27,7 +27,8 @@
     <head>
         <title><?php echo $username; ?></title>
         <link rel="stylesheet" type="text/css" href="css/accounthome.css">
-        <script src="js/accounthome.js"></script>
+        <script src="js/loadnewsfeed.js"></script>
+        <script src="js/likedislikeprocess.js"></script>
     </head>
 
     <body onload="loadNewsfeed(<?php echo $id; ?>)">

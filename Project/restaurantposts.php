@@ -30,6 +30,7 @@
         <title>Posts</title>
         <link rel="stylesheet" type="text/css" href="css/restaurantposts.css">
         <script src="js/posts.js"></script>
+        <script src="js/likedislikeprocess.js"></script>
     </head>
 
     <body onload="showAllPosts(<?php echo $id; ?>)">
