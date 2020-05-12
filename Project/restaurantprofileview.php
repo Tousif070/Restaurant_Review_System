@@ -205,31 +205,31 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td id="rating" align="center" style="padding-top: 20px;">
-                            <?php
-                                if(isset($_COOKIE["userID"]))
-                                {
-                                    if(count($result8) == 1)
-                                    {
-                                        $myRating=$result8[0]["rating"];
-                                        echo "<span style='font-family: arial; font-size: 18px;'>You Have Rated $myRating</span>";
-                                        for($i=0; $i<$myRating; $i++) { echo "<img src='images/filledstar.png' width='16' height='16' style='margin-left: 5px;' alt='Rating Star'>"; }
-                                        echo "<br><input class='button button-accent' style='margin: 15px 0 0 0' type='button' onclick='ratingProcess(0, $id)' value='Undo'>";
-                                    }
-                                    else if(count($result8) == 0)
-                                    {
-                                        echo "<span style='font-family: arial; font-size: 18px;'>Give A Rating:</span>";
-                                        echo "<img id='star1' onmouseover='showFilledStars(1)' onmouseout='showHollowStars(1)' onclick='ratingProcess(1, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
-                                        echo "<img id='star2' onmouseover='showFilledStars(2)' onmouseout='showHollowStars(2)' onclick='ratingProcess(2, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
-                                        echo "<img id='star3' onmouseover='showFilledStars(3)' onmouseout='showHollowStars(3)' onclick='ratingProcess(3, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
-                                        echo "<img id='star4' onmouseover='showFilledStars(4)' onmouseout='showHollowStars(4)' onclick='ratingProcess(4, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
-                                        echo "<img id='star5' onmouseover='showFilledStars(5)' onmouseout='showHollowStars(5)' onclick='ratingProcess(5, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
-                                    }
-                                }
-                            ?>
-                        </td>
-                    </tr>
+                    <?php
+                        if(isset($_COOKIE["userID"]))
+                        {
+                            echo "<tr><td id='rating' align='center' style='padding-top: 20px;'>";
+
+                            if(count($result8) == 1)
+                            {
+                                $myRating=$result8[0]["rating"];
+                                echo "<span style='font-family: arial; font-size: 18px;'>You Have Rated $myRating</span>";
+                                for($i=0; $i<$myRating; $i++) { echo "<img src='images/filledstar.png' width='16' height='16' style='margin-left: 5px;' alt='Rating Star'>"; }
+                                echo "<br><input class='button button-accent' style='margin: 15px 0 0 0' type='button' onclick='ratingProcess(0, $id)' value='Undo'>";
+                            }
+                            else if(count($result8) == 0)
+                            {
+                                echo "<span style='font-family: arial; font-size: 18px;'>Give A Rating:</span>";
+                                echo "<img id='star1' onmouseover='showFilledStars(1)' onmouseout='showHollowStars(1)' onclick='ratingProcess(1, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
+                                echo "<img id='star2' onmouseover='showFilledStars(2)' onmouseout='showHollowStars(2)' onclick='ratingProcess(2, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
+                                echo "<img id='star3' onmouseover='showFilledStars(3)' onmouseout='showHollowStars(3)' onclick='ratingProcess(3, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
+                                echo "<img id='star4' onmouseover='showFilledStars(4)' onmouseout='showHollowStars(4)' onclick='ratingProcess(4, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
+                                echo "<img id='star5' onmouseover='showFilledStars(5)' onmouseout='showHollowStars(5)' onclick='ratingProcess(5, $id)' src='images/hollowstar.png' width='16' height='16' style='margin-left: 5px; cursor: pointer;' alt='Rating Star'>";
+                            }
+
+                            echo "</td></tr>";
+                        }
+                    ?>
 
                     <tr><td align="center"><hr style="width: 95%; height: 2px; background: black; margin: 20px 0 0 0;"></td></tr>
 

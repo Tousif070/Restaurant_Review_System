@@ -114,6 +114,72 @@ section::after {
     padding: 50px 0;
 }
 
+/* NEWSFEED STYLE */
+
+.newsfeed-container {
+    margin: auto;
+    max-width: 700px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+
+.newsfeed-container h1 {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.post-username-heading {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 0;
+}
+
+.post-username {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+
+.post-restaurant {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+
+.post-datetime {
+    font-family: sans-serif;
+    font-size: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 0;
+    padding-bottom: 15px;
+}
+
+.post-text {
+    font-weight: 500;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+
+.post-images {
+    padding: 0 150px;
+}
+
+.post-hr {
+    width: 95%;
+    height: 2px;
+    background: black;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
 /* BUTTON STYLE */
 
 .button {

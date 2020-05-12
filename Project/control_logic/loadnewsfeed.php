@@ -14,7 +14,14 @@
 
     if(count($result) == 0)
     {
-        echo "<div style='font-size: 18px; padding: 20px; height: 500px;'>Follow Food Bloggers & Restaurants To See Their Posts/Activity !</div>";
+        if(isset($_COOKIE["userID"]))
+        {
+            echo "<div style='font-size: 18px; padding: 20px; height: 500px;'>Follow Food Bloggers & Restaurants To See Their Posts/Activity !</div>";
+        }
+        else if(isset($_COOKIE["restaurantID"]))
+        {
+            echo "<div style='font-size: 18px; padding: 20px; height: 500px;'>Follow Food Bloggers To See What They Post About You !</div>";
+        }
         closeDatabaseConnection();
         exit;
     }
