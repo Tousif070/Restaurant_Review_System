@@ -104,6 +104,46 @@ ALTER TABLE likes_dislikes ADD CONSTRAINT fk_post_id FOREIGN KEY (post_id) REFER
 
 ALTER TABLE likes_dislikes ADD CONSTRAINT fk_account_id5 FOREIGN KEY (account_id) REFERENCES login (id);
 
+CREATE TABLE food_category(
+	id int(10) PRIMARY KEY AUTO_INCREMENT,
+    category_name varchar(100)
+);
+
+CREATE TABLE restaurant_food_category(
+	id int(10) PRIMARY KEY AUTO_INCREMENT,
+    restaurant_id int(10),
+    food_category_id int(10)
+);
+
+ALTER TABLE restaurant_food_category ADD CONSTRAINT fk_restaurant_id3 FOREIGN KEY (restaurant_id) REFERENCES restaurants (id);
+
+ALTER TABLE restaurant_food_category ADD CONSTRAINT fk_food_category_id FOREIGN KEY (food_category_id) REFERENCES food_category (id);
+
+INSERT INTO food_category values (null, 'Set Menu');
+INSERT INTO food_category values (null, 'Rice Bowl');
+INSERT INTO food_category values (null, 'Pasta');
+INSERT INTO food_category values (null, 'Chowmein');
+INSERT INTO food_category values (null, 'Burger');
+INSERT INTO food_category values (null, 'Fries & Wedges');
+INSERT INTO food_category values (null, 'Fried Chicken');
+INSERT INTO food_category values (null, 'Steak');
+INSERT INTO food_category values (null, 'Nachos');
+INSERT INTO food_category values (null, 'Sub Sandwich');
+INSERT INTO food_category values (null, 'Pizza');
+INSERT INTO food_category values (null, 'Chinese Food');
+INSERT INTO food_category values (null, 'Thai Food');
+INSERT INTO food_category values (null, 'Italian Food');
+INSERT INTO food_category values (null, 'Rice & Biriyani');
+INSERT INTO food_category values (null, 'Sweets & Desert');
+INSERT INTO food_category values (null, 'Ice Cream & Pastry');
+INSERT INTO food_category values (null, 'Cold Drinks');
+INSERT INTO food_category values (null, 'Juice & Smoothies');
+INSERT INTO food_category values (null, 'Cold Coffee');
+INSERT INTO food_category values (null, 'Hot Coffee');
+INSERT INTO food_category values (null, 'Tea');
+
+
+
 
 
 

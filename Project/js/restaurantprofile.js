@@ -98,3 +98,31 @@ function editAboutRestaurant()
         ajax.send();
     }
 }
+
+function showAllFoodCategory()
+{
+    var x=document.getElementById("allFoodCategory");
+    if(x.style.display == "none")
+    {
+        x.style.display="block";
+    }
+    else if(x.style.display == "block")
+    {
+        x.style.display="none";
+    }
+}
+
+function editFoodCategory(obj)
+{
+    var id=obj.id;
+    var flag=obj.checked;
+    var ajax=new XMLHttpRequest();
+    ajax.onreadystatechange=function(){
+        if(ajax.readyState == 4 && ajax.status == 200)
+        {
+            document.getElementById("foodCategory").innerHTML=ajax.responseText;
+        }
+    };
+    ajax.open("GET", "control_logic/editfoodcategory.php?id=" + id + "&flag=" + flag, true);
+    ajax.send();
+}

@@ -55,6 +55,7 @@
         $query5="select account_id, following_id from following where account_id=$accountID and following_id=$id";
         $query6="select count(following_id) as 'followers' from following where following_id=$id";
         $query7="select format(avg(rating), 1) as 'rating', count(restaurant_id) as 'total_rating_count' from ratings where restaurant_id=$id";
+        $query33="select category_name from food_category join restaurant_food_category on food_category.id=restaurant_food_category.food_category_id where restaurant_food_category.restaurant_id=$id";
 
         $result1=executeAndGetQuery($query1);
         $result2=executeAndGetQuery($query2);
@@ -63,6 +64,7 @@
         $result5=executeAndGetQuery($query5);
         $result6=executeAndGetQuery($query6);
         $result7=executeAndGetQuery($query7);
+        $result33=executeAndGetQuery($query33);
 
         if(isset($_COOKIE["userID"]))
         {
@@ -246,7 +248,10 @@
             <!-- RESTAURANT INFORMATION -->
             <div class="form-container2">
 
-                <h1>restaurant information</h1>
+                <h1>
+                    <span style="font-size: 24px;">restaurant information</span>
+                </h1>
+
 
                 <table align="center">
 
@@ -270,6 +275,44 @@
 
             </div>
 
+
+            <!-- FOOD CATEGORY -->
+            <div class="form-container2">
+
+                <h1>
+                    <span style="font-size: 24px;">we serve the following category of food</span>
+                </h1>
+
+                <table id="foodCategory" align="center">
+                    <?php
+                        if(count($result33) > 0)
+                        {
+                            $size=count($result33);
+                            $i=$k=0;
+                            while($i < $size)
+                            {
+                                $k=$k+3;
+                                if($k > $size)
+                                {
+                                    $k=$size;
+                                }
+
+                                echo "<tr>";
+                                for($i; $i < $k; $i++)
+                                {
+                                    $name=$result33[$i]["category_name"];
+                                    echo "<td style='font-size: 18px; padding-left: 25px;'><li>$name</li></td>";
+                                }
+                                echo "</tr>";
+                            }
+                        }
+                    ?>
+                </table>
+
+            </div>
+
+
+            <!-- MENU PHOTO -->
             <div class="form-container2">
 
                 <h1>

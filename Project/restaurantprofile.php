@@ -18,6 +18,8 @@
         $query5="select count(account_id) as 'following' from following where account_id=$id";
         $query6="select count(following_id) as 'followers' from following where following_id=$id";
         $query7="select format(avg(rating), 1) as 'rating', count(restaurant_id) as 'total_rating_count' from ratings where restaurant_id=$id";
+        $query33="select food_category.id as 'id', category_name from food_category join restaurant_food_category on food_category.id=restaurant_food_category.food_category_id where restaurant_food_category.restaurant_id=$id";
+        $query34="select id, category_name from food_category";
 
         createDatabaseConnection();
         $result1=executeAndGetQuery($query1);
@@ -27,6 +29,8 @@
         $result5=executeAndGetQuery($query5);
         $result6=executeAndGetQuery($query6);
         $result7=executeAndGetQuery($query7);
+        $result33=executeAndGetQuery($query33);
+        $result34=executeAndGetQuery($query34);
         closeDatabaseConnection();
 
         $username=$result1[0]["username"];
@@ -163,7 +167,10 @@
             <!-- RESTAURANT INFORMATION -->
             <div class="form-container2">
 
-                <h1>restaurant information</h1>
+                <h1>
+                    <span style="font-size: 24px;">restaurant information</span>
+                </h1>
+
 
                 <table align="center">
 
@@ -194,6 +201,90 @@
 
             </div>
 
+
+            <!-- FOOD CATEGORY -->
+            <div class="form-container2">
+
+                <h1>
+                    <span style="font-size: 24px;">food category</span>
+                </h1>
+
+                <table id="foodCategory" align="center">
+                    <?php
+                        if(count($result33) > 0)
+                        {
+                            $size=count($result33);
+                            $i=$k=0;
+                            while($i < $size)
+                            {
+                                $k=$k+3;
+                                if($k > $size)
+                                {
+                                    $k=$size;
+                                }
+
+                                echo "<tr>";
+                                for($i; $i < $k; $i++)
+                                {
+                                    $name=$result33[$i]["category_name"];
+                                    echo "<td style='font-size: 18px; padding-left: 25px;'><li>$name</li></td>";
+                                }
+                                echo "</tr>";
+                            }
+                        }
+                    ?>
+                </table>
+
+                <table align="center" style="margin-top: 20px;">
+                    <tr><td>
+                        <table id="allFoodCategory" align="center" style="border: 1px solid black; border-radius: 3px; padding: 10px 10px 10px 0; display: none;">
+                            <?php
+                                $size=count($result34);
+                                $i=$k=0;
+                                while($i < $size)
+                                {
+                                    $k=$k+3;
+                                    if($k > $size)
+                                    {
+                                        $k=$size;
+                                    }
+
+                                    echo "<tr>";
+                                    for($i; $i < $k; $i++)
+                                    {
+                                        $flag=1;
+                                        $id=$result34[$i]["id"];
+                                        $name=$result34[$i]["category_name"];
+                                        for($j=0; $j<count($result33); $j++)
+                                        {
+                                            if($id == $result33[$j]["id"])
+                                            {
+                                                echo "<td style='font-size: 18px; padding-left: 25px;'>";
+                                                echo "<input id='$id' type='checkbox' onchange='editFoodCategory(this)' checked> $name";
+                                                echo "</td>";
+                                                $flag=0;
+                                                break;
+                                            }
+                                        }
+                                        if($flag)
+                                        {
+                                            echo "<td style='font-size: 18px; padding-left: 25px;'>";
+                                            echo "<input id='$id' type='checkbox' onchange='editFoodCategory(this)'> $name";
+                                            echo "</td>";
+                                        }
+                                    }
+                                    echo "</tr>";
+                                }
+                            ?>
+                        </table>
+                    </td></tr>
+
+                    <tr><td align="center"><input type="button" class="button button-accent" style="margin-right: 0;" onclick="showAllFoodCategory()" value="Edit"></td></tr>
+                </table>
+
+            </div>
+
+
             <!-- MENU PHOTO UPLOAD -->
             <div class="form-container2">
 
@@ -219,10 +310,14 @@
 
             </div>
 
+
             <!-- ACCOUNT STATS -->
             <div class="form-container2">
 
-                <h1>account stats</h1>
+                <h1>
+                    <span style="font-size: 24px;">account stats</span>
+                </h1>
+
 
                 <table align="center">
 
