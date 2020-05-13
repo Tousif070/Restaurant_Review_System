@@ -36,7 +36,7 @@
             $accountID=$_COOKIE["userID"];
             if($id == $accountID) // CANNOT VIEW HIS/HER OWN PROFILE THROUGH PROFILE VIEW
             {
-                header("Location:accounthome.php");
+                header("Location:userprofile.php");
                 closeDatabaseConnection();
                 exit;
             }
@@ -44,12 +44,6 @@
         else if(isset($_COOKIE["restaurantID"]))
         {
             $accountID=$_COOKIE["restaurantID"];
-            if($id == $accountID) // CANNOT VIEW HIS/HER OWN PROFILE THROUGH PROFILE VIEW
-            {
-                header("Location:accounthome2.php");
-                closeDatabaseConnection();
-                exit;
-            }
         }
 
         $query1="select username from login where id=$accountID";

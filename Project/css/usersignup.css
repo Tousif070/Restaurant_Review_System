@@ -74,7 +74,7 @@ section::after {
 
 .form-container {
     margin: auto;
-    max-width: 50%;
+    max-width: 700px;
     border-width: 2px;
     border-style: solid;
     border-color: black;
@@ -93,7 +93,7 @@ section::after {
 
 table {
     margin: auto;
-    width: 50%;
+    width: 400px;
 }
 
 td {

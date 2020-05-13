@@ -5,7 +5,7 @@
     $id=$username=$restaurantName=$branchName=$address=$establishedIn=$email=$about="";
     $directory1=$directory2=$width1=$width2=$height1=$height2="";
     $following=$followers=0;
-    $rating=0;
+    $rating=$totalRatingCount=0;
 
     if(isset($_COOKIE["restaurantID"]))
     {
@@ -17,7 +17,7 @@
         $query4="select storage_location, width, height from photos where id=(select menu_photo_id from restaurants where id=$id)";
         $query5="select count(account_id) as 'following' from following where account_id=$id";
         $query6="select count(following_id) as 'followers' from following where following_id=$id";
-        $query7="select format(avg(rating), 1) as 'rating' from ratings where restaurant_id=$id";
+        $query7="select format(avg(rating), 1) as 'rating', count(restaurant_id) as 'total_rating_count' from ratings where restaurant_id=$id";
 
         createDatabaseConnection();
         $result1=executeAndGetQuery($query1);
@@ -70,11 +70,12 @@
         $following=$result5[0]["following"];
         $followers=$result6[0]["followers"];
 
-        // LOADING RESTAURANT RATING
+        // LOADING RESTAURANT RATING STATS
         if($result7[0]["rating"] != null)
         {
             $rating=$result7[0]["rating"];
         }
+        $totalRatingCount=$result7[0]["total_rating_count"];
     }
     else
     {
@@ -137,6 +138,7 @@
                     <?php echo $restaurantName."<br>"; ?>
                     <span style="font-size: 22px;"><?php echo $branchName; ?></span>
                     <span style="font-family: arial; font-size: 20px; display: block; margin-top: 10px;"><?php echo "Rating: ".$rating; ?></span>
+                    <span style="font-family: arial; font-size: 14px; font-weight: 500; display: block; margin-top: 4px;"><?php echo "Rated By $totalRatingCount People"; ?></span>
                 </h1>
 
                 <!-- PROFILE PHOTO UPLOAD -->
