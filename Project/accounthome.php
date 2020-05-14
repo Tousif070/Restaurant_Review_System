@@ -9,9 +9,11 @@
         $id=$_COOKIE["userID"];
 
         $query="select username from login where id=$id";
+        $query33="select category_name from food_category";
 
         createDatabaseConnection();
         $result=executeAndGetQuery($query);
+        $result33=executeAndGetQuery($query33);
         closeDatabaseConnection();
 
         $username=$result[0]["username"];
@@ -29,6 +31,7 @@
         <link rel="stylesheet" type="text/css" href="css/accounthome.css">
         <script src="js/loadnewsfeed.js"></script>
         <script src="js/likedislikeprocess.js"></script>
+        <script src="js/smartsearch.js"></script>
     </head>
 
     <body onload="loadNewsfeed(<?php echo $id; ?>)">
@@ -72,7 +75,66 @@
 
         <section class="accounthome-page-section-2">
 
-            <div id="newsfeed" class="newsfeed-container">
+            <div>
+
+                <div class="form-container">
+                    <table align="center">
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td style="font-size: 18px; font-weight: 700;">Search By Typing A Name:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" style="margin-top: 10px; width: 250px;" onkeyup="search(this)" placeholder="Name of User or Restaurant">
+                                            <div id=searchResults class="searchResult"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="" class="view-feature-clicks">View All Users/Food Bloggers</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="" class="view-feature-clicks">View All Restaurants</td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                            <td style="padding-left: 50px;">
+
+                                <form action="" method="post">
+                                    <table>
+                                        <tr>
+                                            <td align="right" style="font-size: 18px; font-weight: 700;">Search Restaurants By Food Category:</td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <select style="width: 250px; margin-top: 9px;">
+                                                    <option selected disabled>Select A Category</option>
+                                                    <?php
+                                                        for($i=0; $i<count($result33); $i++)
+                                                        {
+                                                            $name=$result33[$i]["category_name"];
+                                                            echo "<option>$name</option>";
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right"><input type="submit" class="button button-accent" style="margin-top: 10px;" value="Search"></td>
+                                        </tr>
+                                    </table>
+                                </form>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="newsfeed" class="newsfeed-container">
+
+                </div>
 
             </div>
 
