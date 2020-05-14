@@ -22,6 +22,13 @@
     {
         header("Location:login.php");
     }
+
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        $foodCategory=$_POST["foodCategory"];
+
+        header("Location:accountlist.php?value=1&foodCategory=$foodCategory");
+    }
 ?>
 
 <html>
@@ -32,6 +39,20 @@
         <script src="js/loadnewsfeed.js"></script>
         <script src="js/likedislikeprocess.js"></script>
         <script src="js/smartsearch.js"></script>
+        <script>
+            function checkFoodCategory()
+            {
+                var obj=document.getElementById("foodCategory");
+                if(obj.options[obj.selectedIndex].text == "Select A Category")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        </script>
     </head>
 
     <body onload="loadNewsfeed(<?php echo $id; ?>)">
@@ -75,66 +96,62 @@
 
         <section class="accounthome-page-section-2">
 
-            <div>
+            <div class="form-container">
+                <table align="center">
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="font-size: 18px; font-weight: 700;">Search By Typing A Name:</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" style="margin-top: 10px; width: 250px;" onkeyup="search(this)" placeholder="Name of User or Restaurant">
+                                        <div id=searchResults class="searchResult"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="accountlist.php?value=2" class="view-feature-clicks">View All Users/Food Bloggers</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="accountlist.php?value=3" class="view-feature-clicks">View All Restaurants</td>
+                                </tr>
+                            </table>
+                        </td>
 
-                <div class="form-container">
-                    <table align="center">
-                        <tr>
-                            <td>
+                        <td style="padding-left: 50px;">
+
+                            <form action="" onsubmit="return checkFoodCategory()" method="post">
                                 <table>
                                     <tr>
-                                        <td style="font-size: 18px; font-weight: 700;">Search By Typing A Name:</td>
+                                        <td align="right" style="font-size: 18px; font-weight: 700;">Search Restaurants By Food Category:</td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <input type="text" style="margin-top: 10px; width: 250px;" onkeyup="search(this)" placeholder="Name of User or Restaurant">
-                                            <div id=searchResults class="searchResult"></div>
+                                        <td align="right">
+                                            <select id="foodCategory" name="foodCategory" style="width: 250px; margin-top: 9px;">
+                                                <option selected disabled>Select A Category</option>
+                                                <?php
+                                                    for($i=0; $i<count($result33); $i++)
+                                                    {
+                                                        $name=$result33[$i]["category_name"];
+                                                        echo "<option>$name</option>";
+                                                    }
+                                                ?>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="accountlist.php?value=1" class="view-feature-clicks">View All Users/Food Bloggers</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="accountlist.php?value=2" class="view-feature-clicks">View All Restaurants</td>
+                                        <td align="right"><input type="submit" class="button button-accent" style="margin-top: 11px;" value="Search"></td>
                                     </tr>
                                 </table>
-                            </td>
+                            </form>
 
-                            <td style="padding-left: 50px;">
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
-                                <form action="" method="post">
-                                    <table>
-                                        <tr>
-                                            <td align="right" style="font-size: 18px; font-weight: 700;">Search Restaurants By Food Category:</td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                <select style="width: 250px; margin-top: 9px;">
-                                                    <option selected disabled>Select A Category</option>
-                                                    <?php
-                                                        for($i=0; $i<count($result33); $i++)
-                                                        {
-                                                            $name=$result33[$i]["category_name"];
-                                                            echo "<option>$name</option>";
-                                                        }
-                                                    ?>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right"><input type="submit" class="button button-accent" style="margin-top: 10px;" value="Search"></td>
-                                        </tr>
-                                    </table>
-                                </form>
-
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div id="newsfeed" class="newsfeed-container">
-
-                </div>
+            <div id="newsfeed" class="newsfeed-container">
 
             </div>
 
