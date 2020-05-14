@@ -92,10 +92,10 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><a href="" class="view-feature-clicks">View All Users/Food Bloggers</a></td>
+                                        <td><a href="accountlist.php?value=1" class="view-feature-clicks">View All Users/Food Bloggers</a></td>
                                     </tr>
                                     <tr>
-                                        <td><a href="" class="view-feature-clicks">View All Restaurants</td>
+                                        <td><a href="accountlist.php?value=2" class="view-feature-clicks">View All Restaurants</td>
                                     </tr>
                                 </table>
                             </td>
