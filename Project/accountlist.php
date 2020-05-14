@@ -21,6 +21,18 @@
 
         $username=$result[0]["username"];
     }
+    else if(isset($_COOKIE["restaurantID"]))
+    {
+        $id=$_COOKIE["restaurantID"];
+
+        $query="select username from login where id=$id";
+
+        createDatabaseConnection();
+        $result=executeAndGetQuery($query);
+        closeDatabaseConnection();
+
+        $username=$result[0]["username"];
+    }
     else
     {
         header("Location:login.php");
