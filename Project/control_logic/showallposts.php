@@ -13,7 +13,28 @@
 
     if(count($postResults) == 0)
     {
-        echo "<div style='font-size: 18px; padding: 20px;'>You Have Not Created Any Posts Yet !</div>";
+        if(isset($_COOKIE["userID"]))
+        {
+            if($id == $_COOKIE["userID"])
+            {
+                echo "<div style='font-size: 18px; padding: 20px;'>You Have Not Created Any Posts Yet !</div>";
+            }
+            else
+            {
+                echo "<div style='font-size: 18px; padding: 20px;'>No Posts Created Yet !</div>";
+            }
+        }
+        else if(isset($_COOKIE["restaurantID"]))
+        {
+            if($id == $_COOKIE["restaurantID"])
+            {
+                echo "<div style='font-size: 18px; padding: 20px;'>You Have Not Created Any Posts Yet !</div>";
+            }
+            else
+            {
+                echo "<div style='font-size: 18px; padding: 20px;'>No Posts Created Yet !</div>";
+            }
+        }
         closeDatabaseConnection();
         exit;
     }

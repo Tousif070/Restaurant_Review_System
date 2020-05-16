@@ -253,7 +253,7 @@
                 </h1>
 
 
-                <table align="center">
+                <table align="center" style="width: 500px;">
 
                     <tr>
                         <td class="label">Address:</td><td class="info"><?php echo $address; ?></td>
@@ -265,7 +265,7 @@
                         <td class="label">Email:</td><td class="info"><?php echo $email; ?></td>
                     </tr>
                     <tr>
-                        <td class="label">About:</td><td class="info"><?php echo $about; ?></td>
+                        <td valign="top" class="label">About:</td><td class="info"><?php echo $about; ?></td>
                     </tr>
                     <tr>
                         <td class="label">Followers:</td><td class="info"><?php echo $followers; ?></td>
