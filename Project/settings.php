@@ -11,36 +11,34 @@
         $id=$_COOKIE["userID"];
 
         $query1="select username from login where id=$id";
-        //$query2="select email from general_users where id='$id'";
+        $query2="select email from general_users where id='$id'";
 
         createDatabaseConnection();
         $result1=executeAndGetQuery($query1);
-        //$result2=executeAndGetQuery($query2);
+        $result2=executeAndGetQuery($query2);
         closeDatabaseConnection();
 
         $rs1=$result1[0];
         $username=$rs1["username"];
 
-        //$rs2=$result2[0];
-        //$email=$rs2["email"];
+        $email=$result2[0]["email"];
     }
     else if(isset($_COOKIE["restaurantID"]))
     {
         $id=$_COOKIE["restaurantID"];
 
         $query1="select username from login where id='$id'";
-        //$query2="select email from restaurants where id='$id'";
+        $query2="select email from restaurants where id='$id'";
 
         createDatabaseConnection();
         $result1=executeAndGetQuery($query1);
-        //$result2=executeAndGetQuery($query2);
+        $result2=executeAndGetQuery($query2);
         closeDatabaseConnection();
 
         $rs1=$result1[0];
         $username=$rs1["username"];
 
-        //$rs2=$result2[0];
-        //$email=$rs2["email"];
+        $email=$result2[0]["email"];
     }
     else
     {
@@ -101,30 +99,51 @@
 
         <section class="usersettings-page-section-2">
 
-            <!--
+
+
+            <!-- CHANGE USERNAME -->
             <div class="form-container">
                 <h1>
-                    change username & email
+                    change Username
+                    <div class="successful-message">
+                        <?php
+                            if(isset($_GET["usernameChangeSuccess"]))
+                            {
+                                if($_GET["usernameChangeSuccess"] == 1)
+                                {
+                                    echo "username changed successfully !";
+                                }
+                            }
+                        ?>
+                    </div>
                 </h1>
-                <form action="" method="post">
-                    <table>-->
+                <form name="usernameForm" action="control_logic/changeusername.php" method="post">
+                    <table>
 
-                        <!-- USERNAME --><!--
+                        <?php
+                            if(isset($_GET["UsernameError"]))
+                            {
+                                $errorUsername=$_GET["UsernameError"];
+                            }
+                        ?>
+
+                        <!-- USERNAME -->
                         <tr><td class="label">Username:</td></tr>
-                        <tr><td><input type="text" name="username" value="<?php echo $username; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyUsername.$errorUsername; ?></td></tr>-->
+                        <tr><td><input id="newusername" type="text" name="newusername" onkeyup="validateUsername()" value="<?php echo $username; ?>"></td></tr>
+                        <tr><td class="caution-messages">Only Letters & Numbers</td></tr>
+                        <tr><td id="errorUsername" class="error-messages"><?php echo $emptyUsername.$errorUsername; ?></td></tr>
 
-                        <!-- EMAIL --><!--
-                        <tr><td class="label">Email:</td></tr>
-                        <tr><td><input type="text" name="email" value="<?php echo $email; ?>"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyEmail.$errorEmail; ?></td></tr>
-
-                        <tr><td align="right"><input class="button button-accent" type="submit" value="Save"></td></tr>
+                        <tr><td align="right">
+                        <input class="button button-accent" type="submit" value="Save">
+                        </td></tr>
 
                     </table>
                 </form>
-            </div>-->
+            </div>
 
+
+
+            <!-- CHANGE PASSWORD -->
             <div class="form-container">
                 <h1>
                     change password
@@ -169,24 +188,49 @@
                 </form>
             </div>
 
-            <!--
-            <div class="form-container">
+
+
+
+            <!-- CHANGE EMAIL -->
+            <div class="form-container" style="margin-bottom: 0;">
                 <h1>
-                    change contact number
+                    change email
+                    <div class="successful-message">
+                        <?php
+                            if(isset($_GET["emailChangeSuccess"]))
+                            {
+                                if($_GET["emailChangeSuccess"] == 1)
+                                {
+                                    echo "e-mail changed successfully !";
+                                }
+                            }
+                        ?>
+                    </div>
                 </h1>
-                <form action="" method="post">
-                    <table>-->
+                <form name="emailForm" action="control_logic/changeemail.php" method="post">
+                    <table>
 
-                        <!-- CONTACT NUMBER --><!--
-                        <tr><td class="label">Contact Number:</td></tr>
-                        <tr><td><input type="text" value="+880" style="width: 50px;" disabled> - <input type="text" name="contactNumber" value="<?php echo $contactNumber; ?>" style="width: 60%;"></td></tr>
-                        <tr><td class="error-messages"><?php echo $emptyContactNumber.$errorContactNumber; ?></td></tr>
+                        <?php
+                            if(isset($_GET["EmailError"]))
+                            {
+                                $errorEmail=$_GET["EmailError"];
+                            }
+                        ?>
 
-                        <tr><td align="right"><input class="button button-accent" type="submit" value="Save"></td></tr>
+                        <!-- EMAIL -->
+                        <tr><td class="label">Email:</td></tr>
+                        <tr><td><input type="text" name="newemail" value="<?php echo $email; ?>"></td></tr>
+                        <tr><td class="error-messages"><?php echo $emptyEmail.$errorEmail; ?></td></tr>
+
+                        <tr><td align="right">
+                        <input class="button button-accent" type="submit" value="Save">
+                        </td></tr>
 
                     </table>
                 </form>
-            </div>-->
+            </div>
+
+
 
         </section>
 

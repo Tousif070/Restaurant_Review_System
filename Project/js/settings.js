@@ -79,3 +79,47 @@ function checkForInvalidCharacters(text)
 
     return found; // IF TRUE, THEN IT MEANS THAT THERE ARE NO INVALID CHARACTERS. IF FALSE, THEN IT MEANS THAT THERE ARE INVALID CHARACTERS
 }
+
+
+
+
+
+
+
+function validateUsername() {
+	var j = 0;
+	var text = document.getElementById("newusername").value;
+	if (text != "") {
+		var splChars = "*|,.\":<>[]{}`';()@&$#%";
+		for (var i = 0; i < text.length; i++) {
+			if (splChars.indexOf(text.charAt(i)) != -1) {
+				j = 1;
+				break;
+			}
+		}
+	}
+
+	if (text == "") {
+		document.getElementById("errorUsername").innerHTML =
+			"Please Enter A Username !";
+	} else if (j == 1) {
+		document.getElementById("errorUsername").innerHTML =
+			"username only contain number & letter !";
+	} else {
+		var ajax = new XMLHttpRequest();
+
+		ajax.onreadystatechange = function () {
+			if (ajax.readyState == 4 && ajax.status == 200) {
+				if (ajax.responseText == 1) {
+					document.getElementById("errorUsername").innerHTML =
+						"Username Already Exists !";
+				} else if (ajax.responseText == 0) {
+					document.getElementById("errorUsername").innerHTML = "";
+				}
+			}
+		};
+
+		ajax.open("GET", "control_logic/checkusername.php?username=" + text, true);
+		ajax.send();
+	}
+}

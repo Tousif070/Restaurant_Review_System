@@ -111,8 +111,7 @@ section::after {
 
 .usersettings-page-section-2 {
     background: #FFF6EB;
-    padding: 100px 0;
-    height: 600px;
+    padding: 50px 0;
 }
 
 /* SUCCESSFUL CHANGES MESSAGE STYLE */
@@ -134,7 +133,7 @@ section::after {
     border-style: solid;
     border-color: black;
     border-radius: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .form-container h1 {
